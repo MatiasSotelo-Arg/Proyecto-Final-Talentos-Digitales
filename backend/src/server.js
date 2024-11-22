@@ -4,6 +4,9 @@ const morgan = require('morgan');
 const connectDB = require('./config/db');
 const errorHandler = require('./middlewares/errorMiddleware');
 
+// Importación de rutas
+const courseRoutes = require('./routes/courseRoutes');
+
 
 // Conectar a la base de datos
 connectDB();
@@ -19,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json()); // Para el parseo de JSON en las solicitudes
 
 // Rutas
-//app.use('/api/products', productRoutes);
+app.use('/api/courses', courseRoutes);
        
 
 // Página de inicio por defecto
