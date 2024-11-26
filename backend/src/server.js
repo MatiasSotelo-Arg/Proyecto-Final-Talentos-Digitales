@@ -6,6 +6,7 @@ const errorHandler = require('./middlewares/errorMiddleware');
 
 // Importación de rutas
 const courseRoutes = require('./routes/courseRoutes');
+const instructorRoutes = require('./routes/instructorRoutes');
 
 
 // Conectar a la base de datos
@@ -23,6 +24,7 @@ app.use(express.json()); // Para el parseo de JSON en las solicitudes
 
 // Rutas
 app.use('/api/courses', courseRoutes);
+app.use('/api/instructors', instructorRoutes);
        
 
 // Página de inicio por defecto
