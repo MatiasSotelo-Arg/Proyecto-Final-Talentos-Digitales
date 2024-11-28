@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import ItemList from "./components/ItemList/ItemList";
 import items from "./data/data.json";

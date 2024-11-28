@@ -14,7 +14,8 @@ const getCourses = async () => {
 
 // Obtener un curso por ID
 const getCourseById = async (id) => {
-  return await Course.findById(id).populate('instructor', 'name email');
+  return await Course.findById(id)
+  //return await Course.findById(id).populate('instructor', 'name email');
 };
 
 // Actualizar un curso
