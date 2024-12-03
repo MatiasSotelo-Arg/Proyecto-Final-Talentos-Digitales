@@ -12,13 +12,11 @@ function App() {
   console.log(items);
   return (
     <>
-    <Login/>
-    <Logout/>
-    <Profile/>
+      <Login />
+      <Logout />
+      <Profile />
       <ItemList items={items} />
       <ItemDetail item={item} />
-      
-      
     </>
   );
 }
