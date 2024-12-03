@@ -30,7 +30,7 @@ const ProtectedRoute = ({ children, role }) => {
   return children;
 };
 
-const OurRoutes = () => {
+const MainRoutes = () => {
   return (
     <Routes>
       {/* Rutas públicas */}
@@ -79,4 +79,4 @@ const OurRoutes = () => {
   );
 };
 
-export default OurRoutes;
+export default MainRoutes;
