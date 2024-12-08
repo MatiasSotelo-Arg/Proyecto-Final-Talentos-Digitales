@@ -1,5 +1,5 @@
 import React from "react";
-import ItemDetail from "../Course/ItemDetail";
+import ItemDetail from "../CourseDetail/ItemDetail";
 
 function ItemList({ items }) {
   return (
