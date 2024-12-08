@@ -1,5 +1,5 @@
 import "./App.css";
-import ItemList from "./components/CourseList/ItemList";
+import ItemList from "./components/CoursesList/ItemList";
 import items from "./data/data.json";
 import ItemDetail from "./components/CourseDetail/ItemDetail";
 
