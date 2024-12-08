@@ -1,7 +1,7 @@
 import "./App.css";
-import ItemList from "./components/ItemList/ItemList";
+import ItemList from "./components/CourseList/ItemList";
 import items from "./data/data.json";
-import ItemDetail from "./components/ItemDetail/ItemDetail";
+import ItemDetail from "./components/CourseDetail/ItemDetail";
 
 import Login from "./components/Auth0/Login";
 import Logout from "./components/Auth0/Logout";
