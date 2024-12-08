@@ -1,6 +1,5 @@
-import React from 'react';
-import ItemDetail from '../ItemDetail/ItemDetail'; 
-
+import React from "react";
+import ItemDetail from "../Course/ItemDetail";
 
 function ItemList({ items }) {
   return (
@@ -9,7 +8,7 @@ function ItemList({ items }) {
       <div className="items-grid">
         {items.map((item) => (
           <div key={item.id} className="item-card">
-            <img src={item.imagen} alt={item.titulo}/>
+            <img src={item.imagen} alt={item.titulo} />
             <h3>{item.titulo}</h3>
             <button>ver mas</button>
           </div>
