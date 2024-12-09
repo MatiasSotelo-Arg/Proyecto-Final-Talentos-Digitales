@@ -5,9 +5,9 @@ import NavBar from "./components/NavBar/NavBar";
 
 // import items from "./data/data.json";
 
-// // import Login from "./components/Auth0/Login";
-// // import Logout from "./components/Auth0/Logout";
-// // import Profile from "./components/Auth0/Profile";
+import Login from "./components/Auth0/Login";
+import Logout from "./components/Auth0/Logout";
+import Profile from "./components/Auth0/Profile";
 
 // import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -26,9 +26,13 @@ function App() {
     <NavBar/>
 
     <Routes>
-
       
       <Route path="/" element={<Home />} />
+  
+ 
+      
+
+
       {/* <Route path="/about" element={<About />} /> */}
       {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
