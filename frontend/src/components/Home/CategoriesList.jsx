@@ -1,23 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import useFetch from "../../hooks/useFetch";
-import { getCourses } from "../../redux/coursesSlice";
+import { useSelector } from "react-redux";
 
 const CategoriesList = () => {
-  const { data, loading, error } = useFetch(
-    import.meta.env.VITE_API_URL + "api/courses"
-  );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (data) {
-      dispatch(getCourses(data));
-    }
-  }, [data, dispatch]);
-
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
+  const data = useSelector((state) => state.courses.courses);
   const uniqueCategories = [...new Set(data.map((course) => course.category))];
 
   return (

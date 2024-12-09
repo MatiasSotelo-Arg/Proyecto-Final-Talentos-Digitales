@@ -9,11 +9,14 @@ const coursesSlice = createSlice({
   initialState,
   reducers: {
     getCourses: (state, action) => {
-      return action.payload;
+      state.courses = action.payload;
+    },
+    addCourse: (state, action) => {
+      state.courses.push(action.payload);
     },
   },
 });
 
-export const { getCourses } = coursesSlice.actions;
+export const { getCourses, addCourse } = coursesSlice.actions;
 
 export default coursesSlice.reducer;
