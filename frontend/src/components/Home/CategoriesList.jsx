@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { fetchCourse } from "../../services/courseCategory";
-import { useFetch } from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 const CategoriesList = () => {
 
