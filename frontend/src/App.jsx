@@ -1,23 +1,36 @@
-import "./App.css";
-import ItemList from "./components/ItemList/ItemList";
-import items from "./data/data.json";
-import ItemDetail from "./components/ItemDetail/ItemDetail";
+// import "./App.css";
+import Home from "./components/Home/Home";
+import NavBar from "./components/NavBar/NavBar";
 
-import Login from "./components/Auth0/Login";
-import Logout from "./components/Auth0/Logout";
-import Profile from "./components/Auth0/Profile";
+import items from "./data/data.json";
+
+// import Login from "./components/Auth0/Login";
+// import Logout from "./components/Auth0/Logout";
+// import Profile from "./components/Auth0/Profile";
+
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 function App() {
-  const item = items[0];
-  console.log(items);
+
   return (
-    <>
-      <Login />
-      <Logout />
-      <Profile />
-      <ItemList items={items} />
-      <ItemDetail item={item} />
-    </>
+ 
+    <BrowserRouter>
+
+    <NavBar/>
+
+    <Routes>
+
+      
+      <Route path="/" element={<Home />} />
+      {/* <Route path="/about" element={<About />} /> */}
+      {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+    </BrowserRouter>
+    
+      
+    
   );
 }
 
