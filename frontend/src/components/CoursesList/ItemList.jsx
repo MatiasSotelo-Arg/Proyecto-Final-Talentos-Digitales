@@ -1,4 +1,3 @@
-import React from "react";
 import ItemDetail from "../CourseDetail/ItemDetail";
 
 function ItemList({ items }) {

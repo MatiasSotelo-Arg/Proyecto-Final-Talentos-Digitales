@@ -1,39 +1,44 @@
-import React, {useEffect, useState} from "react";
-import { fetchCourse } from "../../services/courseCategory";
+import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
+import { useSelector, useDispatch } from "react-redux";
+import { getCourses } from "../../redux/coursesSlice";
 
 const CategoriesList = () => {
+  // const [categories, setCategories] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
-    // const [categories, setCategories] = useState([]);
-    // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //     const getCategories = async() => {
+  //         const data = await fetchCourse();
+  //         setCategories(data);
+  //         setLoading(false)
+  //     }
 
-    // useEffect(() => {
-    //     const getCategories = async() => {
-    //         const data = await fetchCourse(); 
-    //         setCategories(data);
-    //         setLoading(false)
-    //     }
+  //     getCategories();
+  // }, []);
 
-    //     getCategories(); 
-    // }, []);
+  const { data, loading, error } = useFetch(
+    import.meta.env.VITE_API_URL + "api/courses"
+  );
 
-    const {data, loading} = useFetch(import.meta.env.VITE_API_URL + "api/courses")
+  if (error) return <p>Error: {error.message}</p>;
 
-    console.log(data);
+  const courses = useSelector((state) => state.courses);
 
-    if(loading) return <p>Recibiendo las categorias...</p>
+  const dispatch = useDispatch();
 
-    return (
-        <> 
-        {
-            data.map((category) => (
-            <div key={category.id}>
-                {category.category}
-            </div>
+  dispatch(getCourses(data));
+  console.log("Redux: ", courses);
+  if (loading) return <p>Recibiendo las categorias...</p>;
+
+  return (
+    <>
+      {courses &&
+        courses.map((course) => (
+          <div key={course?._id}>{course?.category}</div>
         ))}
-        </>
-       
-    )
-}
+    </>
+  );
+};
 
 export default CategoriesList;
