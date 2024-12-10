@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import {useSelector} from 'react-redux';
-import DataLoader from '../DataLoader/DataLoader';
+import { useSelector } from "react-redux";
 
 function ItemDetail() {
-
-  const { itemId } = useParams();
+  const { cursoId } = useParams();
+  console.log(cursoId);
 
   const cursos = useSelector((state) => state.courses.courses);
   const [cursoFiltrado, setCursoFiltrado] = useState(null);
 
   useEffect(() => {
     if (cursos.length > 0) {
-      const cursoEncontrado = cursos.find((item) => item.id === itemId);
+      const cursoEncontrado = cursos.find((item) => item._id === cursoId);
       if (cursoEncontrado) {
         setCursoFiltrado(cursoEncontrado);
       }
     }
-  }, [cursos, itemId]);
+  }, [cursos, cursoId]);
 
   if (!cursoFiltrado) {
     return <p>Cargando curso...</p>;
   }
 
   return (
-    
     <div className="item-detail">
       <h2>Detalles del Curso</h2>
 
@@ -47,9 +45,8 @@ function ItemDetail() {
                           </div>
         } 
       </div> */}
-      
-      <button>Comprar</button>
 
+      <button>Comprar</button>
     </div>
   );
 }
