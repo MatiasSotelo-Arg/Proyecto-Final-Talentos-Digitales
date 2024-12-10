@@ -22,20 +22,21 @@ function ItemDetail() {
   //handleAddCart
   const dispatch = useDispatch();
 
-  const handleAddCart = () => { 
-    dispatch(cursoFiltrado);
-  }
+  const handleAddCart = () => {
+    dispatch(addCart(cursoFiltrado));
+  };
 
   //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
   //userCoursesId
   const userCoursesId = useSelector((state) => state.userCourses.userCourses);
-  
+
   //validar
   const cursoAdquirido = userCoursesId.some((id) =>
     cursos.some((curso) => curso._id === id)
   );
+  console.log(cursos, userCoursesId);
 
-  console.log(cursoAdquirido)
+  console.log(cursoAdquirido);
   //----Termina verificacion----
 
   if (!cursoFiltrado) {
@@ -53,19 +54,30 @@ function ItemDetail() {
       {/* Imagen y detalles del curso en una fila */}
       <Row className="mb-4">
         <Col md={12} className="d-flex">
-          <Card className="mb-0" style={{ flexDirection: "row", width: "100%" }}>
+          <Card
+            className="mb-0"
+            style={{ flexDirection: "row", width: "100%" }}
+          >
             <Card.Img
               variant="top"
               src={cursoFiltrado.imagen}
               alt={cursoFiltrado.name}
-              style={{ maxWidth: "200px", maxHeight: "200px", objectFit: "cover" }}
+              style={{
+                maxWidth: "200px",
+                maxHeight: "200px",
+                objectFit: "cover",
+              }}
             />
             <Card.Body>
               <Card.Title>{cursoFiltrado.name}</Card.Title>
               <Card.Text>
                 <strong>Precio:</strong> ${cursoFiltrado.price}
               </Card.Text>
-              <Button variant="primary" className="w-10" onClick={handleAddCart}>
+              <Button
+                variant="primary"
+                className="w-10"
+                onClick={handleAddCart}
+              >
                 Añadir al Carrito
               </Button>
             </Card.Body>
@@ -85,7 +97,10 @@ function ItemDetail() {
             <h4>Calificar</h4>
             <div>
               <p>
-                <span role="img" aria-label="corazón">❤️</span> {cursoFiltrado.duration} corazones
+                <span role="img" aria-label="corazón">
+                  ❤️
+                </span>{" "}
+                {cursoFiltrado.duration} corazones
               </p>
             </div>
           </div>
@@ -93,15 +108,22 @@ function ItemDetail() {
           <div className="mb-4">
             <h4>Comentarios</h4>
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor temporibus ratione quidem suscipit, voluptas beatae tempore ab excepturi nihil totam facilis neque, assumenda praesentium tempora numquam dolorum aut consequatur dolore.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
+              temporibus ratione quidem suscipit, voluptas beatae tempore ab
+              excepturi nihil totam facilis neque, assumenda praesentium tempora
+              numquam dolorum aut consequatur dolore.
             </div>
           </div>
 
           <div className="mb-4">
             <h4>Agregar un comentario</h4>
-            <Form.Control as="textarea" rows={3} placeholder="Escriba su comentario..." />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Escriba su comentario..."
+            />
             <Button variant="primary" className="w-10" onClick>
-                Agregar Comentario
+              Agregar Comentario
             </Button>
           </div>
         </Col>
