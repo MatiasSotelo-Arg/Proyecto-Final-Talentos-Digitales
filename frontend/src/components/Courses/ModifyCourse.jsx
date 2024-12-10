@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-const EditCourse = () => {
+const ModifyCourse = () => {
   const dispatch = useDispatch();
   const { courseId } = useParams(); // Obtiene el ID del curso de la URL
   const courses = useSelector((state) => state.courses.courses);
@@ -214,4 +214,4 @@ const EditCourse = () => {
   );
 };
 
-export default EditCourse;
+export default ModifyCourse;
