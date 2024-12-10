@@ -7,15 +7,16 @@ import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 function ItemDetail() {
   const { cursoId } = useParams();
   const cursos = useSelector((state) => state.courses.courses);
+  const userCoursesId = useSelector((state) => state.userCourses.userCourses);
   const [cursoFiltrado, setCursoFiltrado] = useState(null);
 
   useEffect(() => {
     if (cursos.length > 0) {
       const cursoEncontrado = cursos.find((item) => item._id === cursoId);
+
       if (cursoEncontrado) {
         setCursoFiltrado(cursoEncontrado);
       }
-      console.log(cursoEncontrado);
     }
   }, [cursos, cursoId]);
 
@@ -27,17 +28,7 @@ function ItemDetail() {
   };
 
   //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
-  //userCoursesId
-  const userCoursesId = useSelector((state) => state.userCourses.userCourses);
-
-  //validar
-  const cursoAdquirido = userCoursesId.some((id) =>
-    cursos.some((curso) => curso._id === id)
-  );
-  console.log(cursos, userCoursesId);
-
-  console.log(cursoAdquirido);
-  //----Termina verificacion----
+  const courseAcquired = userCoursesId.includes(cursoId);
 
   if (!cursoFiltrado) {
     return <p>Cargando curso...</p>;
@@ -70,16 +61,21 @@ function ItemDetail() {
             />
             <Card.Body>
               <Card.Title>{cursoFiltrado.name}</Card.Title>
-              <Card.Text>
-                <strong>Precio:</strong> ${cursoFiltrado.price}
-              </Card.Text>
-              <Button
-                variant="primary"
-                className="w-10"
-                onClick={handleAddCart}
-              >
-                Añadir al Carrito
-              </Button>
+
+              {!courseAcquired && (
+                <>
+                  <Card.Text>
+                    <strong>Precio:</strong> ${cursoFiltrado.price}
+                  </Card.Text>
+                  <Button
+                    variant="primary"
+                    className="w-10"
+                    onClick={handleAddCart}
+                  >
+                    Añadir al Carrito
+                  </Button>
+                </>
+              )}
             </Card.Body>
           </Card>
         </Col>
@@ -94,14 +90,11 @@ function ItemDetail() {
           </div>
 
           <div className="mb-4">
-            <h4>Calificar</h4>
+            {courseAcquired ? <h4>Calificar</h4> : <h4>Calificaciones</h4>}
             <div>
-              <p>
-                <span role="img" aria-label="corazón">
-                  ❤️
-                </span>{" "}
-                {cursoFiltrado.duration} corazones
-              </p>
+              {courseAcquired ? <Button>❤️</Button> : "❤️"}
+
+              <p>{cursoFiltrado.duration} corazones</p>
             </div>
           </div>
 
@@ -115,17 +108,19 @@ function ItemDetail() {
             </div>
           </div>
 
-          <div className="mb-4">
-            <h4>Agregar un comentario</h4>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              placeholder="Escriba su comentario..."
-            />
-            <Button variant="primary" className="w-10" onClick>
-              Agregar Comentario
-            </Button>
-          </div>
+          {courseAcquired && (
+            <div className="mb-4">
+              <h4>Agregar un comentario</h4>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Escriba su comentario..."
+              />
+              <Button variant="primary" className="w-10" onClick>
+                Agregar Comentario
+              </Button>
+            </div>
+          )}
         </Col>
       </Row>
     </Container>
