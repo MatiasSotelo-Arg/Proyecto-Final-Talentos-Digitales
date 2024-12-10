@@ -32,7 +32,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pruebas" element={<Pruebas />} />
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
   );
