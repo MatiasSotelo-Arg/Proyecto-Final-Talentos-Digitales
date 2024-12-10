@@ -23,10 +23,20 @@ function ItemDetail() {
   const dispatch = useDispatch();
 
   const handleAddCart = () => { 
-    const cursoConCantidad = { ...cursoFiltrado, quantity: 1 };
-    dispatch(addCart(cursoConCantidad))
-
+    dispatch(cursoFiltrado);
   }
+
+  //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
+  //userCoursesId
+  const userCoursesId = useSelector((state) => state.userCourses.userCourses);
+  
+  //validar
+  const cursoAdquirido = userCoursesId.some((id) =>
+    cursos.some((curso) => curso._id === id)
+  );
+
+  console.log(cursoAdquirido)
+  //----Termina verificacion----
 
   if (!cursoFiltrado) {
     return <p>Cargando curso...</p>;
@@ -90,6 +100,9 @@ function ItemDetail() {
           <div className="mb-4">
             <h4>Agregar un comentario</h4>
             <Form.Control as="textarea" rows={3} placeholder="Escriba su comentario..." />
+            <Button variant="primary" className="w-10" onClick>
+                Agregar Comentario
+            </Button>
           </div>
         </Col>
       </Row>
