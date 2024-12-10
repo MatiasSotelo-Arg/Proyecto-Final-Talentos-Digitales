@@ -10,6 +10,7 @@ function ItemList() {
   return (
     <div>
       <h2>Lista de Cursos</h2>
+      
       <CourseCard courses={cursos}/>
     </div>
   );
