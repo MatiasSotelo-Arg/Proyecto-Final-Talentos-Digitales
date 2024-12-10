@@ -9,7 +9,7 @@ function ItemList() {
     <div>
       <h2>Lista de Cursos</h2>
       <div className="items-grid">
-        {cursos .map((item) => (
+        {cursos.map((item) => (
           <div key={item._id} className="item-card">
             <img src={item.image} alt={item.name} />
             <h3>{item.name}</h3>

@@ -9,6 +9,7 @@ import Pruebas from "./components/pruebas";
 import CoursesContainer from "./components/CoursesContainer/CoursesContainer";
 import ItemDetail from "./components/CourseDetail/ItemDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
+import CartContainer from "./components/CartContainer/CartContainer.JSX";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/pruebas" element={<Pruebas />} />
+        <Route path="/carrito" element={<CartContainer />} />
         <Route path="/cursos" element={<CoursesContainer />} />
         <Route path="/cursos/:cursoId" element={<ItemDetail/>} />
         {/* <Route path="*" element={<NotFound />} /> */}

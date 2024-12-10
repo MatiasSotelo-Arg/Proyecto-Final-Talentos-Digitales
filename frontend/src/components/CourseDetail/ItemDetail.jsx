@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-
 import { useParams } from "react-router-dom";
-
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addCart } from "../../redux/cartSlice";
+import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 function ItemDetail() {
   const { cursoId } = useParams();
-  console.log(cursoId);
-
   const cursos = useSelector((state) => state.courses.courses);
   const [cursoFiltrado, setCursoFiltrado] = useState(null);
 
@@ -17,37 +15,85 @@ function ItemDetail() {
       if (cursoEncontrado) {
         setCursoFiltrado(cursoEncontrado);
       }
+      console.log(cursoEncontrado);
     }
   }, [cursos, cursoId]);
+
+  //handleAddCart
+  const dispatch = useDispatch();
+
+  const handleAddCart = () => { 
+    const cursoConCantidad = { ...cursoFiltrado, quantity: 1 };
+    dispatch(addCart(cursoConCantidad))
+
+  }
 
   if (!cursoFiltrado) {
     return <p>Cargando curso...</p>;
   }
 
   return (
-    <div className="item-detail">
-      <h2>Detalles del Curso</h2>
+    <Container className="mt-5">
+      <Row className="mb-4">
+        <Col>
+          <h2 className="text-center">Detalle del Curso</h2>
+        </Col>
+      </Row>
 
-      <p>{cursoFiltrado.name}</p>
-      {/* <img src={item.imagen} alt={item.titulo} />
-      <p>{item.nombreProfesor}</p>
-      <h3>{item.titulo}</h3>
-      <p>{item.descripcion}</p>
-      <div>
-       {
-        item.descuento && <div> 
-                            <div>
-                              <s>${item.precio}</s> <p>%{item.porcentajeDescuento}</p>
-                            </div>
-                            <div>
-                              <p>$1000</p>
-                            </div>
-                          </div>
-        } 
-      </div> */}
+      {/* Imagen y detalles del curso en una fila */}
+      <Row className="mb-4">
+        <Col md={12} className="d-flex">
+          <Card className="mb-0" style={{ flexDirection: "row", width: "100%" }}>
+            <Card.Img
+              variant="top"
+              src={cursoFiltrado.imagen}
+              alt={cursoFiltrado.name}
+              style={{ maxWidth: "200px", maxHeight: "200px", objectFit: "cover" }}
+            />
+            <Card.Body>
+              <Card.Title>{cursoFiltrado.name}</Card.Title>
+              <Card.Text>
+                <strong>Precio:</strong> ${cursoFiltrado.price}
+              </Card.Text>
+              <Button variant="primary" className="w-10" onClick={handleAddCart}>
+                Añadir al Carrito
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
 
-      <button>Comprar</button>
-    </div>
+      {/* Resto de la información */}
+      <Row>
+        <Col md={12}>
+          <div className="mb-4">
+            <h4>Descripción</h4>
+            <p>{cursoFiltrado.description}</p>
+          </div>
+
+          <div className="mb-4">
+            <h4>Calificar</h4>
+            <div>
+              <p>
+                <span role="img" aria-label="corazón">❤️</span> {cursoFiltrado.duration} corazones
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <h4>Comentarios</h4>
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor temporibus ratione quidem suscipit, voluptas beatae tempore ab excepturi nihil totam facilis neque, assumenda praesentium tempora numquam dolorum aut consequatur dolore.
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <h4>Agregar un comentario</h4>
+            <Form.Control as="textarea" rows={3} placeholder="Escriba su comentario..." />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
