@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción en tu slice
 import { Form, Button, Row, Col } from "react-bootstrap";
+import "./FormStyles.css";
 
 const CreateCourse = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const CreateCourse = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/courses`,
+        `${import.meta.env.VITE_API_URL}api/courses`,
         {
           method: "POST",
           headers: {
@@ -59,167 +60,203 @@ const CreateCourse = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <h2>Crear Curso</h2>
-      <Row>
-        <Col md={6}>
-          <Form.Group controlId="formCourseName">
-            <Form.Label>Nombre:</Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              value={courseData.name}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-        </Col>
-        <Col md={6}>
-          <Form.Group controlId="formCourseCategory">
-            <Form.Label>Categoría:</Form.Label>
-            <Form.Control
-              as="select"
-              name="category"
-              value={courseData.category}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Seleccionar</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Programación">Programación</option>
-              <option value="Diseño">Diseño</option>
-              <option value="Otros">Otros</option>
-            </Form.Control>
-          </Form.Group>
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseName">
+          <Form.Label className="label-styled">Nombre:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="name"
+            value={courseData.name}
+            onChange={handleChange}
+            required
+          />
         </Col>
       </Row>
-      <Row>
-        <Col md={12}>
-          <Form.Group controlId="formCourseDescription">
-            <Form.Label>Descripción:</Form.Label>
-            <Form.Control
-              as="textarea"
-              name="description"
-              value={courseData.description}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseDescription">
+          <Form.Label className="label-styled">Descripción:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            as="textarea"
+            name="description"
+            value={courseData.description}
+            onChange={handleChange}
+            required
+          />
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
-          <Form.Group controlId="formCourseSubcategory">
-            <Form.Label>Subcategoría:</Form.Label>
-            <Form.Control
-              type="text"
-              name="subcategory"
-              value={courseData.subcategory}
-              onChange={handleChange}
-            />
-          </Form.Group>
-        </Col>
-        <Col md={6}>
-          <Form.Group controlId="formCourseDuration">
-            <Form.Label>Duración (horas):</Form.Label>
-            <Form.Control
-              type="number"
-              name="duration"
-              value={courseData.duration}
-              onChange={handleChange}
-            />
-          </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseCategory">
+          <Form.Label className="label-styled">Categoría:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            as="select"
+            name="category"
+            value={courseData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Seleccionar</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Programación">Programación</option>
+            <option value="Diseño">Diseño</option>
+            <option value="Otros">Otros</option>
+          </Form.Control>
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
-          <Form.Group controlId="formCoursePrice">
-            <Form.Label>Precio:</Form.Label>
-            <Form.Control
-              type="number"
-              name="price"
-              value={courseData.price}
-              onChange={handleChange}
-            />
-          </Form.Group>
-        </Col>
-        <Col md={6}>
-          <Form.Group controlId="formCourseInstructor">
-            <Form.Label>Instructor ID:</Form.Label>
-            <Form.Control
-              type="text"
-              name="instructor"
-              value={courseData.instructor}
-              onChange={handleChange}
-            />
-          </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseSubcategory">
+          <Form.Label className="label-styled">Subcategoría:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="subcategory"
+            value={courseData.subcategory}
+            onChange={handleChange}
+          />
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
-          <Form.Group controlId="formCourseStartDate">
-            <Form.Label>Fecha de inicio:</Form.Label>
-            <Form.Control
-              type="date"
-              name="startDate"
-              value={courseData.startDate}
-              onChange={handleChange}
-            />
-          </Form.Group>
-        </Col>
-        <Col md={6}>
-          <Form.Group controlId="formCourseEndDate">
-            <Form.Label>Fecha de finalización:</Form.Label>
-            <Form.Control
-              type="date"
-              name="endDate"
-              value={courseData.endDate}
-              onChange={handleChange}
-            />
-          </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseDuration">
+          <Form.Label className="label-styled">Duración (horas):</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="number"
+            name="duration"
+            value={courseData.duration}
+            onChange={handleChange}
+          />
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
-          <Form.Group controlId="formCourseLevel">
-            <Form.Label>Nivel:</Form.Label>
-            <Form.Control
-              as="select"
-              name="level"
-              value={courseData.level}
-              onChange={handleChange}
-            >
-              <option value="">Seleccionar</option>
-              <option value="beginner">Principiante</option>
-              <option value="intermediate">Intermedio</option>
-              <option value="advanced">Avanzado</option>
-            </Form.Control>
-          </Form.Group>
-        </Col>
-        <Col md={6}>
-          <Form.Group controlId="formCourseImage">
-            <Form.Label>Imagen (URL):</Form.Label>
-            <Form.Control
-              type="text"
-              name="image"
-              value={courseData.image}
-              onChange={handleChange}
-            />
-          </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCoursePrice">
+          <Form.Label className="label-styled">Precio:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="number"
+            name="price"
+            value={courseData.price}
+            onChange={handleChange}
+          />
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
-          <Form.Group controlId="formCourseVideo">
-            <Form.Label>Video (URL):</Form.Label>
-            <Form.Control
-              type="text"
-              name="video"
-              value={courseData.video}
-              onChange={handleChange}
-            />
-          </Form.Group>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseInstructor">
+          <Form.Label className="label-styled">Instructor ID:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="instructor"
+            value={courseData.instructor}
+            onChange={handleChange}
+          />
         </Col>
       </Row>
-      <Button variant="primary" type="submit">
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseStartDate">
+          <Form.Label className="label-styled">Fecha de inicio:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="date"
+            name="startDate"
+            value={courseData.startDate}
+            onChange={handleChange}
+          />
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseEndDate">
+          <Form.Label className="label-styled">
+            Fecha de finalización:
+          </Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="date"
+            name="endDate"
+            value={courseData.endDate}
+            onChange={handleChange}
+          />
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseLevel">
+          <Form.Label className="label-styled">Nivel:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            as="select"
+            name="level"
+            value={courseData.level}
+            onChange={handleChange}
+          >
+            <option value="">Seleccionar</option>
+            <option value="beginner">Principiante</option>
+            <option value="intermediate">Intermedio</option>
+            <option value="advanced">Avanzado</option>
+          </Form.Control>
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseImage">
+          <Form.Label className="label-styled">Imagen (URL):</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="image"
+            value={courseData.image}
+            onChange={handleChange}
+          />
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formCourseVideo">
+          <Form.Label className="label-styled">Video (URL):</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="video"
+            value={courseData.video}
+            onChange={handleChange}
+          />
+        </Col>
+      </Row>
+
+      <Button variant="primary" type="submit" className="mt-3">
         Crear Curso
       </Button>
     </Form>

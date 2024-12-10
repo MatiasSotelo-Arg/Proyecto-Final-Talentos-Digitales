@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCourse } from "../redux/coursesSlice";
 import { useEffect } from "react";
 import CreateCourse from "./Courses/CreateCourse";
+import DeleteCourseButton from "./Courses/DeleteCourse";
 
 const Pruebas = () => {
   //   const cursos = useSelector((state) => state.courses.courses);
@@ -13,6 +14,7 @@ const Pruebas = () => {
   return (
     <>
       <CreateCourse />
+      <DeleteCourseButton courseId={1} />
     </>
   );
 };

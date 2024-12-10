@@ -1,0 +1,18 @@
+.form-control.input-thick-border {
+  border-width: 3px; /* Grosor del borde */
+  border-color: #0a0d11; /* Color del borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.label-styled {
+  font-family: Arial, Helvetica, "Roboto", sans-serif; /* O elige una fuente atractiva */
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #007bff; /* Fondo azul */
+  color: white; /* Texto blanco */
+  padding: 5px 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  display: inline-block; /* Para que el tamaño del fondo siga el texto */
+}
