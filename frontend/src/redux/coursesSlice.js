@@ -45,7 +45,7 @@ export const {
   getCourses,
   addCourse,
   createCourse,
-  deleteCours,
+  deleteCourse,
   updateCourse,
 } = coursesSlice.actions;
 
