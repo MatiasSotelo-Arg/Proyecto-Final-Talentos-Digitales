@@ -32,7 +32,7 @@ const NavBar = () => {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link as={NavLink} to="/misCursos">
+              <Nav.Link as={NavLink} to="/miscursos">
                 Mis Cursos
               </Nav.Link>
             </Nav.Item>
