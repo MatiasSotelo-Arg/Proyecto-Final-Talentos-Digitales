@@ -14,9 +14,12 @@ const coursesSlice = createSlice({
     addCourse: (state, action) => {
       state.courses.push(action.payload);
     },
+    createCourse: (state, action) => {
+      state.courses.push(action.payload);
+    },
   },
 });
 
-export const { getCourses, addCourse } = coursesSlice.actions;
+export const { getCourses, addCourse, createCourse } = coursesSlice.actions;
 
 export default coursesSlice.reducer;
