@@ -22,10 +22,31 @@ const coursesSlice = createSlice({
         (course) => course._id !== action.payload
       );
     },
+    updateCourse: (state, action) => {
+      if (!action.payload || !action.payload.id) {
+        console.error("Invalid action payload");
+        return;
+      }
+
+      const index = state.courses.findIndex(
+        (course) => course.id === action.payload.id
+      );
+
+      if (index !== -1) {
+        state.courses[index] = action.payload; // Actualiza el curso en el estado
+      } else {
+        console.warn("Course not found");
+      }
+    },
   },
 });
 
-export const { getCourses, addCourse, createCourse, deleteCourse } =
-  coursesSlice.actions;
+export const {
+  getCourses,
+  addCourse,
+  createCourse,
+  deleteCours,
+  updateCourse,
+} = coursesSlice.actions;
 
 export default coursesSlice.reducer;
