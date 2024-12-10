@@ -11,6 +11,8 @@ import useFetch from "./hooks/useFetch";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCourses } from "./redux/coursesSlice";
+import CoursesContainer from "./components/CoursesContainer/CoursesContainer";
+import ItemDetail from "./components/CourseDetail/ItemDetail";
 
 function App() {
   const { data, loading, error } = useFetch(
@@ -32,6 +34,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pruebas" element={<Pruebas />} />
+        <Route path="/cursos" element={<CoursesContainer />} />
+        <Route path="/cursos/:cursoId" element={<ItemDetail />} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
