@@ -1,5 +1,4 @@
-// <<<<<<< HEAD
-// // import "./App.css";
+
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 
@@ -35,7 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pruebas" element={<Pruebas />} />
         <Route path="/cursos" element={<CoursesContainer />} />
-        <Route path="/cursos/:cursoId" element={<ItemDetail />} />
+        <Route path="/cursos/:cursoId" element={<ItemDetail/>} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
