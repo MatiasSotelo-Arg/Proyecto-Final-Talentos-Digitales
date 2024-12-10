@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
 import {useSelector} from 'react-redux';
+import DataLoader from '../DataLoader/DataLoader';
 
 function ItemDetail() {
 
   const { itemId } = useParams();
 
   const cursos = useSelector((state) => state.courses.courses);
+  const [cursoFiltrado, setCursoFiltrado] = useState(null);
 
-  console.log(cursos)
+  useEffect(() => {
+    if (cursos.length > 0) {
+      const cursoEncontrado = cursos.find((item) => item.id === itemId);
+      if (cursoEncontrado) {
+        setCursoFiltrado(cursoEncontrado);
+      }
+    }
+  }, [cursos, itemId]);
 
-  const cursoFiltrado = cursos.find((item) => item.id === itemId)
-  
-  console.log(cursoFiltrado.name)
+  if (!cursoFiltrado) {
+    return <p>Cargando curso...</p>;
+  }
 
   return (
     
