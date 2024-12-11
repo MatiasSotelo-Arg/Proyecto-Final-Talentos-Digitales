@@ -21,7 +21,7 @@ function App() {
       <DataLoader />
       <NavBar />
       
-      <div style={{ height: '85vh' }}>
+      <div style={{ minHeight: '85vh' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pruebas" element={<Pruebas />} />
