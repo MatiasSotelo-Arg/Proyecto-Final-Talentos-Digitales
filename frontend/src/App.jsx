@@ -8,7 +8,7 @@ import Pruebas from "./components/pruebas";
 import CoursesContainer from "./components/CoursesContainer/CoursesContainer";
 import ItemDetail from "./components/CourseDetail/ItemDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
-import CartContainer from "./components/CartContainer/CartContainer.JSX";
+import CartContainer from "./components/CartContainer/CartContainer";
 import UserCourses from "./components/userCourses/userCourses";
 import ModifyCourse from "./components/Courses/ModifyCourse";
 import FooterContainer from "./components/Footer/FooterContainer/FooterContainer";
