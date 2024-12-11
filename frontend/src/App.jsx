@@ -20,18 +20,21 @@ function App() {
     <BrowserRouter>
       <DataLoader />
       <NavBar />
-      <Routes>
-
-        <Route path="/" element={<Home />} />
-        <Route path="/pruebas" element={<Pruebas />} />
-        <Route path="/carrito" element={<CartContainer />} />
-        <Route path="/cursos" element={<CoursesContainer />} />
-        <Route path="/cursos/:cursoId" element={<ItemDetail/>} />
-        <Route path="/miscursos" element={<UserCourses/>} />
-        <Route path="/modificar" element={<ModifyCourse/>} />
-        {/* <Route path="*" element={<NotFound />} /> */}
-        
-      </Routes>
+      
+      <div style={{ height: '85vh' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pruebas" element={<Pruebas />} />
+          <Route path="/carrito" element={<CartContainer />} />
+          <Route path="/cursos" element={<CoursesContainer />} />
+          <Route path="/cursos/:cursoId" element={<ItemDetail/>} />
+          <Route path="/miscursos" element={<UserCourses/>} />
+          <Route path="/modificar" element={<ModifyCourse/>} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+          
+        </Routes>
+      </div>
+      
       <FooterContainer />
     </BrowserRouter>
   );

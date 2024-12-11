@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 0;
   text-align: center;
@@ -69,4 +69,8 @@
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+.items-grid {
+  margin: 0 2rem;
 }

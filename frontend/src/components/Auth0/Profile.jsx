@@ -9,7 +9,7 @@ const Profile = () => {
   console.log(useAuth0());
   return (
     isAuthenticated && (
-      <div>
+      <div className="text-white">
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>

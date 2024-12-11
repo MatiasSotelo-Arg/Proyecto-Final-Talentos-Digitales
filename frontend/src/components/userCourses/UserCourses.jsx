@@ -12,6 +12,7 @@ const UserCourses = () => {
 
     return (
         <>
+        <h2>Mis Cursos</h2>
         {
            <CourseCard courses={userCourseFilter}/>
         }

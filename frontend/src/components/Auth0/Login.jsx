@@ -48,7 +48,7 @@ const AuthHandler = () => {
   };
 
   return (
-    <button onClick={handleLogin} disabled={isLoading}>
+    <button onClick={handleLogin} disabled={isLoading} >
       {isLoading ? "Loading..." : "Log In2"}
     </button>
   );
