@@ -18,18 +18,25 @@ const CategoriesList = () => {
 
   return (
     <>
-      <div className="mt-3">
-        <h2>Categorías</h2>
-        {uniqueCategories.map((category) => (
-          <Button
-            className="m-1"
-            key={category}
-            onClick={() => handleFilterCategory(category)}
-          >
-            {category}
-          </Button>
-        ))}
+      <div>
+  <div>
+    <h2>Categorías</h2>
+  </div>
+
+  <div className="row m-3 justify-content-center">
+    {uniqueCategories.map((category) => (
+      <div className="col-12 col-md-auto m-1" key={category}>
+        <Button
+          className="w-100"
+          onClick={() => handleFilterCategory(category)}
+        >
+          {category}
+        </Button>
       </div>
+    ))}
+  </div>
+</div>
+
 
       <div>
         {filteredCourses.length > 0 ? (

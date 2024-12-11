@@ -6,6 +6,8 @@ import LogoutButton from "../Auth0/Logout";
 import Profile from "../Auth0/Profile";
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 
+import './Navbar.css';
+
 const NavBar = () => {
   return (
     <Navbar expand="lg" className="bg-dark text-white">
@@ -13,9 +15,9 @@ const NavBar = () => {
         <Navbar.Brand as={NavLink} to="/" className="text-white">
           <h1>Talentos Academy</h1>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-white' />
+        <Navbar.Collapse id="basic-navbar-nav" className='reset'>
+          <Nav className="margin-reset">
             <Nav.Item>
               <Nav.Link as={NavLink} to="/carrito" className="text-white">
                 <FiShoppingCart />
