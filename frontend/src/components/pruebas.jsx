@@ -41,9 +41,9 @@ const Pruebas = () => {
         </Col>
       </Row> */}
 
-      {/* <CreateCourse /> */}
+      <CreateCourse />
       {/* <DeleteCourseButton courseId={"675919853a93a7a7519e8e2a"} /> */}
-      <EditCourse courseId={"67410535b2540e7763e04bed"} />
+      {/* <EditCourse courseId={"67410535b2540e7763e04bed"} /> */}
     </Container>
   );
 };

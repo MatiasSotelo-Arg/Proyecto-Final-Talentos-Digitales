@@ -95,6 +95,13 @@ const CreateCourse = () => {
     }
   };
 
+  const handleRemoveFromPlaylist = (index) => {
+    setCourseData((prevData) => ({
+      ...prevData,
+      playlist: prevData.playlist.filter((_, i) => i !== index),
+    }));
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       <h2>Crear Curso</h2>
@@ -349,10 +356,29 @@ const CreateCourse = () => {
             <Form.Label className="label-styled">Playlist:</Form.Label>
           </Form.Group>
           <Col md={8}>
-            <ul>
+            <ul className="list-unstyled">
               {courseData.playlist.map((video, index) => (
-                <li key={index}>
-                  {video.name} - {video.url}
+                <li
+                  key={index}
+                  className="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <div>
+                    {video.name} -{" "}
+                    <a
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {video.url}
+                    </a>
+                  </div>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleRemoveFromPlaylist(index)}
+                  >
+                    Eliminar
+                  </Button>
                 </li>
               ))}
             </ul>
