@@ -5,6 +5,7 @@ import CreateCourse from "./CoursesCRUD/CreateCourse";
 import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import { FiPlusCircle } from "react-icons/fi";
 import DeleteCourseButton from "./CoursesCRUD/DeleteCourse";
+import EditCourse from "./CoursesCRUD/EditCourse";
 
 const Pruebas = () => {
   // const cursos = useSelector((state) => state.courses.courses);
@@ -40,8 +41,9 @@ const Pruebas = () => {
         </Col>
       </Row> */}
 
-      {/* <CreateCourse /> */}
-      <DeleteCourseButton courseId={"675919853a93a7a7519e8e2a"} />
+      <CreateCourse />
+      {/* <DeleteCourseButton courseId={"675919853a93a7a7519e8e2a"} /> */}
+      {/* <EditCourse courseId={"67410535b2540e7763e04bed"} /> */}
     </Container>
   );
 };

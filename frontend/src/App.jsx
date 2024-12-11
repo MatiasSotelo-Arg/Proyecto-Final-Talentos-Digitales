@@ -10,7 +10,7 @@ import ItemDetail from "./components/CourseDetail/ItemDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
 import CartContainer from "./components/CartContainer/CartContainer";
 import UserCourses from "./components/userCourses/UserCourses";
-import ModifyCourse from "./components/CoursesCRUD/ModifyCourse";
+import EditCourse from "./components/CoursesCRUD/EditCourse";
 import FooterContainer from "./components/Footer/FooterContainer/FooterContainer";
 import LoadUserToDB from "./components/Auth0/LoadUserToDB";
 
@@ -29,7 +29,7 @@ function App() {
           <Route path="/cursos" element={<CoursesContainer />} />
           <Route path="/cursos/:cursoId" element={<ItemDetail />} />
           <Route path="/miscursos" element={<UserCourses />} />
-          <Route path="/modificar" element={<ModifyCourse />} />
+          <Route path="/modificar" element={<EditCourse />} />
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </div>
