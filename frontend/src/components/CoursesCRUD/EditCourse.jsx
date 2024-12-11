@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { createCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción en tu slice
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
+import { updateCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción implementada
+import { Button, Form, Row, Col } from "react-bootstrap";
 import "./FormStyles.css";
 
-const CreateCourse = () => {
+const EditCourse = ({ courseId }) => {
   const dispatch = useDispatch();
+  const courses = useSelector((state) => state.courses.courses);
+  const courseToEdit = courses.find((course) => course._id === courseId);
   const [courseData, setCourseData] = useState({
     name: "",
     description: "",
@@ -23,6 +26,12 @@ const CreateCourse = () => {
     video: "",
     playlist: [],
   });
+
+  useEffect(() => {
+    if (courseToEdit) {
+      setCourseData(courseToEdit); // Carga los datos del curso a editar
+    }
+  }, [courseToEdit]);
 
   const [instructors, setInstructors] = useState([]); // Estado para los instructores
   const [videoData, setVideoData] = useState({ name: "", url: "" }); // Estado para manejar los videos
@@ -46,6 +55,7 @@ const CreateCourse = () => {
       [name]: value,
     });
   };
+
   const handleVideoChange = (e) => {
     const { name, value } = e.target;
     setVideoData({
@@ -70,11 +80,10 @@ const CreateCourse = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(courseData);
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}api/courses`,
+        `${import.meta.env.VITE_API_URL}api/courses/${courseId}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -83,21 +92,47 @@ const CreateCourse = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Error al crear el curso");
+        throw new Error("Error al actualizar el curso.");
       }
 
-      const data = await response.json();
-      dispatch(createCourse(data));
-      alert("Curso creado exitosamente");
+      const updatedCourse = await response.json();
+      dispatch(updateCourse(updatedCourse)); // Asegúrate de que la acción `updateCourse` esté implementada
+      alert("Curso actualizado exitosamente.");
+    } catch (error) {
+      console.error("Error al actualizar el curso:", error);
+      alert("Hubo un problema al actualizar el curso.");
+    }
+  };
+  const handleRemoveFromPlaylist = async (videoUrl) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}api/courses/${courseData._id}/playlist`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: videoUrl }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al eliminar el video");
+      }
+
+      const updatedCourse = await response.json(); // Supone que el backend retorna el curso actualizado
+      setCourseData(updatedCourse); // Actualiza el estado con la respuesta del servidor
+
+      alert("Video eliminado exitosamente");
     } catch (error) {
       console.error("Error:", error);
-      alert("Error al crear el curso");
+      alert("Hubo un problema al intentar eliminar el video");
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Crear Curso</h2>
+      <h2>Modificar Curso</h2>
       <Row className="mb-3">
         <Form.Group as={Col} md={4} controlId="formCourseName">
           <Form.Label className="label-styled">Nombre:</Form.Label>
@@ -343,7 +378,7 @@ const CreateCourse = () => {
       </Row>
 
       {/* Mostrar videos en la playlist */}
-      {courseData.playlist.length > 0 && (
+      {/* {courseData.playlist.length > 0 && (
         <Row className="mb-3">
           <Form.Group as={Col} md={4} controlId="formCoursePlaylist">
             <Form.Label className="label-styled">Playlist:</Form.Label>
@@ -357,14 +392,49 @@ const CreateCourse = () => {
               ))}
             </ul>
           </Col>
+        </Row> */}
+      {/* Mostrar videos en la playlist */}
+      {courseData.playlist.length > 0 && (
+        <Row className="mb-3">
+          <Form.Group as={Col} md={4} controlId="formCoursePlaylist">
+            <Form.Label className="label-styled">Playlist:</Form.Label>
+          </Form.Group>
+          <Col md={8}>
+            <ul className="list-unstyled">
+              {courseData.playlist.map((video, index) => (
+                <li
+                  key={index}
+                  className="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <div>
+                    {video.name} -{" "}
+                    <a
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {video.url}
+                    </a>
+                  </div>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleRemoveFromPlaylist(video.url)}
+                  >
+                    Eliminar
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </Col>
         </Row>
       )}
 
       <Button variant="primary" type="submit" className="mt-3">
-        Crear Curso
+        Modificar Curso
       </Button>
     </Form>
   );
 };
 
-export default CreateCourse;
+export default EditCourse;

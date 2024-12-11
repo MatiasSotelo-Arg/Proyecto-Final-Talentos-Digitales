@@ -23,7 +23,7 @@ const coursesSlice = createSlice({
       );
     },
     updateCourse: (state, action) => {
-      if (!action.payload || !action.payload.id) {
+      if (!action.payload || !action.payload._id) {
         console.error("Invalid action payload");
         return;
       }
