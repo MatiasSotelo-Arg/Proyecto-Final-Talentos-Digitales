@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addCourse } from "../redux/coursesSlice";
 import { useEffect } from "react";
-import CreateCourse from "./Courses/CreateCourse";
+import CreateCourse from "./CoursesCRUD/CreateCourse";
 import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import { FiPlusCircle } from "react-icons/fi";
-import DeleteCourseButton from "./Courses/DeleteCourse";
+import DeleteCourseButton from "./CoursesCRUD/DeleteCourse";
 
 const Pruebas = () => {
   // const cursos = useSelector((state) => state.courses.courses);
@@ -40,8 +40,8 @@ const Pruebas = () => {
         </Col>
       </Row> */}
 
-      <CreateCourse />
-      <DeleteCourseButton courseId={1} />
+      {/* <CreateCourse /> */}
+      <DeleteCourseButton courseId={"675919853a93a7a7519e8e2a"} />
     </Container>
   );
 };

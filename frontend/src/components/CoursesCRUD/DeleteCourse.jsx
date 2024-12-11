@@ -17,6 +17,10 @@ const DeleteCourseButton = ({ courseId }) => {
           `${import.meta.env.VITE_API_URL}api/courses/${courseId}`,
           { method: "DELETE" }
         );
+        if (response.status === 404) {
+          alert("El curso no existe o ya fue eliminado.");
+          return;
+        }
 
         if (!response.ok) {
           throw new Error("Error al borrar el curso.");

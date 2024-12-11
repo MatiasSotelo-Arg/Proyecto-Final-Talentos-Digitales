@@ -10,7 +10,7 @@ import ItemDetail from "./components/CourseDetail/ItemDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
 import CartContainer from "./components/CartContainer/CartContainer";
 import UserCourses from "./components/userCourses/UserCourses";
-import ModifyCourse from "./components/Courses/ModifyCourse";
+import ModifyCourse from "./components/CoursesCRUD/ModifyCourse";
 import FooterContainer from "./components/Footer/FooterContainer/FooterContainer";
 import LoadUserToDB from "./components/Auth0/LoadUserToDB";
 
