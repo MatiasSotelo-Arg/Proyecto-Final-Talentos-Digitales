@@ -16,7 +16,7 @@ const Pruebas = () => {
 
   return (
     <Container className="mt-5">
-      <Row className="mb-4 text-center">
+      {/* <Row className="mb-4 text-center">
         <Col>
           <h1 className="display-4 text-primary font-weight-bold">
             Administrar Cursos
@@ -38,7 +38,7 @@ const Pruebas = () => {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
 
       <CreateCourse />
       <DeleteCourseButton courseId={1} />

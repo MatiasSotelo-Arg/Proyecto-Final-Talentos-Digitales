@@ -6,7 +6,6 @@ const Profile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  console.log(useAuth0());
   return (
     isAuthenticated && (
       <div className="text-white">

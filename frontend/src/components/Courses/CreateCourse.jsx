@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción en tu slice
 import { Form, Button, Row, Col } from "react-bootstrap";
@@ -13,6 +13,7 @@ const CreateCourse = () => {
     subcategory: "",
     duration: 0,
     price: 0,
+    likes: 0,
     instructor: "",
     startDate: "",
     endDate: "",
@@ -20,7 +21,23 @@ const CreateCourse = () => {
     level: "",
     image: "",
     video: "",
+    playlist: [],
   });
+
+  const [instructors, setInstructors] = useState([]); // Estado para los instructores
+  const [videoData, setVideoData] = useState({ name: "", url: "" }); // Estado para manejar los videos
+  // Cargar instructores disponibles
+  useEffect(() => {
+    const fetchInstructors = async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}api/instructors`
+      );
+      const data = await response.json();
+      setInstructors(data); // Suponiendo que la respuesta es un array de instructores
+    };
+
+    fetchInstructors();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +46,31 @@ const CreateCourse = () => {
       [name]: value,
     });
   };
+  const handleVideoChange = (e) => {
+    const { name, value } = e.target;
+    setVideoData({
+      ...videoData,
+      [name]: value,
+    });
+  };
+
+  const handleAddToPlaylist = (e) => {
+    e.preventDefault();
+    if (videoData.name && videoData.url) {
+      setCourseData((prevData) => ({
+        ...prevData,
+        playlist: [...prevData.playlist, videoData],
+      }));
+      setVideoData({ name: "", url: "" }); // Limpiar campos después de agregar
+    } else {
+      alert("Por favor, complete ambos campos para agregar un video.");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(courseData);
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}api/courses`,
         {
@@ -161,16 +199,24 @@ const CreateCourse = () => {
 
       <Row className="mb-3">
         <Form.Group as={Col} md={4} controlId="formCourseInstructor">
-          <Form.Label className="label-styled">Instructor ID:</Form.Label>
+          <Form.Label className="label-styled">Instructor:</Form.Label>
         </Form.Group>
         <Col md={8}>
           <Form.Control
             className="input-thick-border"
-            type="text"
+            as="select"
             name="instructor"
             value={courseData.instructor}
             onChange={handleChange}
-          />
+            required
+          >
+            <option value="">Seleccionar instructor</option>
+            {instructors.map((instructor) => (
+              <option key={instructor._id} value={instructor._id}>
+                {instructor.email}
+              </option>
+            ))}
+          </Form.Control>
         </Col>
       </Row>
 
@@ -255,6 +301,61 @@ const CreateCourse = () => {
           />
         </Col>
       </Row>
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formVideoName">
+          <Form.Label className="label-styled">Nombre del Video:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="name"
+            value={videoData.name}
+            onChange={handleVideoChange}
+            placeholder="Ingrese el nombre del video"
+          />
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group as={Col} md={4} controlId="formVideoURL">
+          <Form.Label className="label-styled">URL del Video:</Form.Label>
+        </Form.Group>
+        <Col md={8}>
+          <Form.Control
+            className="input-thick-border"
+            type="text"
+            name="url"
+            value={videoData.url}
+            onChange={handleVideoChange}
+            placeholder="Ingrese la URL del video"
+          />
+          <Button
+            variant="secondary"
+            onClick={handleAddToPlaylist}
+            className="mt-2"
+          >
+            Agregar a Playlist
+          </Button>
+        </Col>
+      </Row>
+
+      {/* Mostrar videos en la playlist */}
+      {courseData.playlist.length > 0 && (
+        <Row className="mb-3">
+          <Form.Group as={Col} md={4} controlId="formCoursePlaylist">
+            <Form.Label className="label-styled">Playlist:</Form.Label>
+          </Form.Group>
+          <Col md={8}>
+            <ul>
+              {courseData.playlist.map((video, index) => (
+                <li key={index}>
+                  {video.name} - {video.url}
+                </li>
+              ))}
+            </ul>
+          </Col>
+        </Row>
+      )}
 
       <Button variant="primary" type="submit" className="mt-3">
         Crear Curso
