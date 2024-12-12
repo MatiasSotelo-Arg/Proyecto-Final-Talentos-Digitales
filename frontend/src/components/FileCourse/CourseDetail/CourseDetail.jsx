@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addCart } from "../../redux/cartSlice";
+import { addCart } from "../../../redux/cartSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 function CourseDetail() {

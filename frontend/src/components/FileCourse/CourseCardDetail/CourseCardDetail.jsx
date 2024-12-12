@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-import "./CourseCard.css";
+import "./CourseCardDetail.css";
 
 const CourseCard = ({ courses }) => {
   return (

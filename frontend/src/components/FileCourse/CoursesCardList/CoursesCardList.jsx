@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import CourseCard from '../CourseCard/CourseCard';
+import CourseCard from '../CourseCardDetail/CourseCardDetail';
 
 function ItemList() {
 

@@ -6,7 +6,7 @@ import "./App.css";
 import Pruebas from "./components/pruebas";
 
 import CoursesContainer from "./components/FileCourse/CoursesContainer/CoursesContainer";
-import CourseDetail from "./components/CourseDetail/CourseDetail";
+import CourseDetail from "./components/FileCourse/CourseDetail/CourseDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
 import CartContainer from "./components/CartContainer/CartContainer";
 import UserCourses from "./components/UserCourses/UserCourses";

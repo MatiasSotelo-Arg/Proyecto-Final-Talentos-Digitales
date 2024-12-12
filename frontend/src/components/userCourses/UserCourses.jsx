@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import CourseCard from "../FileCourse/CourseCard/CourseCard";
+import CourseCard from "../FileCourse/CourseCardDetail/CourseCardDetail";
 
 const UserCourses = () => {
 
