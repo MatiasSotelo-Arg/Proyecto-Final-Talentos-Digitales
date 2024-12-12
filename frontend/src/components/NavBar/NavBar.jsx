@@ -1,22 +1,26 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { FiShoppingCart } from 'react-icons/fi';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
 import LoginButton from "../Auth0/Login";
 import LogoutButton from "../Auth0/Logout";
 import Profile from "../Auth0/Profile";
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
-import './Navbar.css';
+import "./Navbar.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
+  const { isAuthenticated } = useAuth0();
   return (
     <Navbar expand="lg" className="bg-success text-white">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="text-white">
-          <h1>&gt;Talentos<span className='text-black'> Academy_</span></h1>
+          <h1>
+            &gt;Talentos<span className="text-black"> Academy_</span>
+          </h1>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-white' />
-        <Navbar.Collapse id="basic-navbar-nav" className='reset'>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white" />
+        <Navbar.Collapse id="basic-navbar-nav" className="reset">
           <Nav className="margin-reset">
             <Nav.Item>
               <Nav.Link as={NavLink} to="/carrito" className="text-white mx-1">
@@ -34,23 +38,37 @@ const NavBar = () => {
               </Nav.Link>
             </Nav.Item> */}
             <Nav.Item>
-              <Nav.Link as={NavLink} to="/miscursos" className="text-white mx-1">
+              <Nav.Link
+                as={NavLink}
+                to="/miscursos"
+                className="text-white mx-1"
+              >
                 Mis Cursos
               </Nav.Link>
             </Nav.Item>
 
+            <Nav.Item className="mx-1 text-white">
+              <Profile />
+            </Nav.Item>
+
+            <Nav.Item>
+              {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+            </Nav.Item>
+
             {/* Dropdown para "Mi Cuenta" */}
-            <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown" className="bg-white mx-1">
+            {/* <NavDropdown
+              title="Mi Cuenta"
+              id="basic-nav-dropdown"
+              className="bg-white mx-1"
+            >
               <NavDropdown.Item className="text-white">
-                <LoginButton />
+                {isAuthenticated ? <LogoutButton /> : <LoginButton />}
               </NavDropdown.Item>
-              <NavDropdown.Item className="text-white">
-                <LogoutButton />
-              </NavDropdown.Item>
-              <NavDropdown.Item >
+
+              <NavDropdown.Item>
                 <Profile />
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
