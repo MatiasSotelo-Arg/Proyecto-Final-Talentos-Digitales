@@ -18,10 +18,10 @@ const CategoriesList = () => {
 
   return (
     <>
-      <div>
-  <div>
-    <h2>Categorías</h2>
-  </div>
+    <div>
+      <div className="m-2">
+      <h2>Categorías</h2>
+    </div>
 
   <div className="row m-3 justify-content-center">
     {uniqueCategories.map((category) => (

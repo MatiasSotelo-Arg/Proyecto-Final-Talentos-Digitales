@@ -10,44 +10,44 @@ import './Navbar.css';
 
 const NavBar = () => {
   return (
-    <Navbar expand="lg" className="bg-dark text-white">
+    <Navbar expand="lg" className="bg-success text-white">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="text-white">
-          <h1>Talentos Academy</h1>
+          <h1>&gt;Talentos<span className='text-black'> Academy_</span></h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className='bg-white' />
         <Navbar.Collapse id="basic-navbar-nav" className='reset'>
           <Nav className="margin-reset">
             <Nav.Item>
-              <Nav.Link as={NavLink} to="/carrito" className="text-white">
+              <Nav.Link as={NavLink} to="/carrito" className="text-white mx-1">
                 <FiShoppingCart />
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link as={NavLink} to="/cursos" className="text-white">
+              <Nav.Link as={NavLink} to="/cursos" className="text-white mx-1">
                 Cursos
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item>
+            {/* <Nav.Item>
               <Nav.Link as={NavLink} to="/categorias" className="text-white">
                 Categorías
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
             <Nav.Item>
-              <Nav.Link as={NavLink} to="/miscursos" className="text-white">
+              <Nav.Link as={NavLink} to="/miscursos" className="text-white mx-1">
                 Mis Cursos
               </Nav.Link>
             </Nav.Item>
 
             {/* Dropdown para "Mi Cuenta" */}
-            <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown" >
+            <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown" className="bg-white mx-1">
               <NavDropdown.Item className="text-white">
                 <LoginButton />
               </NavDropdown.Item>
               <NavDropdown.Item className="text-white">
                 <LogoutButton />
               </NavDropdown.Item>
-              <NavDropdown.Item className="text-white">
+              <NavDropdown.Item >
                 <Profile />
               </NavDropdown.Item>
             </NavDropdown>

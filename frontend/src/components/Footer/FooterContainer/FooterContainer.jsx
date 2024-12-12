@@ -7,14 +7,18 @@ import FooterSocialContainer from "../FooterSocialContainer/FooterSocialContaine
 
 const FooterContainer = () => {
     return (
-        <Container fluid className="bg-dark text-white py-4">
+        <Container fluid className="bg-success text-white py-4">
             <Row className="align-items-center">
                 {/* Logo a la izquierda */}
                 <Col 
                     md={3} 
                     className="d-flex flex-column align-items-center justify-content-center justify-content-md-start mb-3 mb-md-0"
                 >
-                    <h2 className="fs-4 mb-0 text-center">Talentos Academy By:</h2>
+                    <a aria-current="page" class="text-white navbar-brand active" href="/" data-discover="true"></a>
+
+                    <h2 className="fs-4 mb-1 text-center">
+                        &gt;Talentos<span class="text-black"> Academy_</span> By
+                    </h2>
                     <NavLink to="/" className="d-flex flex-column align-items-center text-decoration-none text-white">
                         <Image 
                             src="/assets/logoHeader-green.png" 

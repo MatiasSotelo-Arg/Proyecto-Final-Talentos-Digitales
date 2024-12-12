@@ -4,7 +4,11 @@ import CoursesList from '../CoursesList/CoursesList'
 const CoursesContainer = () => {
 
     return (
-        <CoursesList/>
+        <div className='m-2'>
+            <h2>Lista de Cursos</h2>
+            <CoursesList/>
+        </div>
+        
     )
 }
 
