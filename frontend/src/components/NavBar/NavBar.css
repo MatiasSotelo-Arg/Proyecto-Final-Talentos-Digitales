@@ -1,9 +1,22 @@
-
-
 @media (min-width: 990px) {
-.reset {
+  .reset {
     display: flex;
     flex-direction: row-reverse;
+  }
 }
-}
+.cart-badge {
+  top: 33px; /* Ajusta la posición vertical */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%);
+  background-color: yellowgreen;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  font-size: 12px;
+  font-weight: bold;
+}

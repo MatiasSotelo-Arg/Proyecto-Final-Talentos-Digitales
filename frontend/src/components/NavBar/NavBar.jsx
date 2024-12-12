@@ -10,6 +10,7 @@ import "./Navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
+  const cartItemCount = 3;
   const { isAuthenticated } = useAuth0();
   return (
     <Navbar expand="lg" className="bg-success text-white">
@@ -22,11 +23,21 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white" />
         <Navbar.Collapse id="basic-navbar-nav" className="reset">
           <Nav className="margin-reset">
-            <Nav.Item>
+            <Nav.Item className="position-relative">
               <Nav.Link as={NavLink} to="/carrito" className="text-white mx-1">
                 <FiShoppingCart />
               </Nav.Link>
+              {cartItemCount > 0 && (
+                <div className="cart-badge position-absolute">
+                  {cartItemCount}
+                </div>
+              )}
             </Nav.Item>
+            {/* <Nav.Item>
+              <Nav.Link as={NavLink} to="/carrito" className="text-white mx-1">
+                <FiShoppingCart />
+              </Nav.Link>
+            </Nav.Item> */}
             <Nav.Item>
               <Nav.Link as={NavLink} to="/cursos" className="text-white mx-1">
                 Cursos
@@ -48,7 +59,9 @@ const NavBar = () => {
             </Nav.Item>
 
             <Nav.Item className="mx-1 text-white">
-              <Profile />
+              <NavLink to="/profile">
+                <Profile />
+              </NavLink>
             </Nav.Item>
 
             <Nav.Item>
