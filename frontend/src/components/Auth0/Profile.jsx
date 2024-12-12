@@ -8,9 +8,12 @@ const Profile = () => {
   }
   return (
     isAuthenticated && (
-      <div className="text-white">
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
+      <div className="text-white" style={{ alignItems: "center" }}>
+        <img
+          src={user.picture}
+          alt={user.name}
+          style={{ height: "40px", width: "40px", borderRadius: "50%" }}
+        />
       </div>
     )
   );
