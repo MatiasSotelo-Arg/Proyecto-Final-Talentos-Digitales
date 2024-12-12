@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import CourseCard from "../../FileCourse/CourseCardDetail/CourseCardDetail";
+import CourseCardDetail from "../../FileCourseCard/CourseCardDetail/CourseCardDetail";
+
 
 const CategoriesList = () => {
   const cursos = useSelector((state) => state.courses.courses);
@@ -40,9 +41,9 @@ const CategoriesList = () => {
 
       <div>
         {filteredCourses.length > 0 ? (
-          <CourseCard courses={filteredCourses} />
+          <CourseCardDetail courses={filteredCourses} />
         ) : (
-          <CourseCard courses={cursos} />
+          <CourseCardDetail courses={cursos} />
         )}
       </div>
     </>

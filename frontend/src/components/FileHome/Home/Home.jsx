@@ -1,7 +1,13 @@
 import CategoriesList from '../CategoriesList/CategoriesList'
 
 const Home = () => {
-  return <CategoriesList/>;
+  return (
+    <>
+      <div>LO DEL PROFE</div>
+      <CategoriesList/>;
+    </>
+
+  )
 };
 
 export default Home;

@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItemCart, emptyCart } from "../../redux/cartSlice";
+import { deleteItemCart, emptyCart } from "../../../redux/cartSlice";
 
 const CartItemsList = () => {
   const carrito = useSelector((state) => state.cart.cart);

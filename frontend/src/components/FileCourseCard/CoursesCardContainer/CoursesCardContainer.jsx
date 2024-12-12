@@ -1,7 +1,7 @@
 
 import CoursesList from '../CoursesCardList/CoursesCardList'
 
-const CoursesContainer = () => {
+const CoursesCardContainer = () => {
 
     return (
         <div className='m-2'>
@@ -12,4 +12,4 @@ const CoursesContainer = () => {
     )
 }
 
-export default CoursesContainer;
+export default CoursesCardContainer;

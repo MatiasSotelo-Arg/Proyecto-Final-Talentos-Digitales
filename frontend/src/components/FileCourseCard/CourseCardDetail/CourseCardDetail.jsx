@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./CourseCardDetail.css";
 
-const CourseCard = ({ courses }) => {
+const CourseCardDetail = ({ courses }) => {
   return (
     <div className="m-4 row d-flex justify-content-center">
       {courses.map((item) => (
@@ -47,4 +47,4 @@ const CourseCard = ({ courses }) => {
   );
 };
 
-export default CourseCard;
+export default CourseCardDetail;
