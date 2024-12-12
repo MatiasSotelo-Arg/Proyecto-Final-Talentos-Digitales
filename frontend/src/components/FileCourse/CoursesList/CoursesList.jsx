@@ -5,8 +5,6 @@ function ItemList() {
 
   const cursos = useSelector((state) => state.courses.courses);
 
-
-
   return (
     <div>
       <CourseCard courses={cursos}/>

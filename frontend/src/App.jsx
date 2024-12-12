@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Pruebas from "./components/pruebas";
 
-import CoursesContainer from "./components/CoursesContainerList/CoursesContainer";
+import CoursesContainer from "./components/FileCourse/CoursesContainer/CoursesContainer";
 import CourseDetail from "./components/CourseDetail/CourseDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
 import CartContainer from "./components/CartContainer/CartContainer";

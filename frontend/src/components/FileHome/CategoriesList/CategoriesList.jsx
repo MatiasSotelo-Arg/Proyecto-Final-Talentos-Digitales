@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import CourseCard from "../../CourseCard/CourseCard";
+import CourseCard from "../../FileCourse/CourseCard/CourseCard";
 
 const CategoriesList = () => {
   const cursos = useSelector((state) => state.courses.courses);
