@@ -33,19 +33,19 @@
   }
 }
 
-.card {
+/* .card {
   padding: 2em;
-}
+} */
 
 .read-the-docs {
   color: #888;
 }
 
 .item-list {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
-.items-grid {
+/* .items-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -73,4 +73,4 @@
 
 .items-grid {
   margin: 0 2rem;
-}
+} */

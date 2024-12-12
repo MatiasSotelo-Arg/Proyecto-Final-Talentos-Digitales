@@ -1,0 +1,7 @@
+@media (min-width: 400px) {
+    .sensitive-width {
+        background-color: blue;
+        /* max-width: ; */
+    }
+  }
+
