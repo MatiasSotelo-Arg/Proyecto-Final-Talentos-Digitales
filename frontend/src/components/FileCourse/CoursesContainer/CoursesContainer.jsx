@@ -1,5 +1,5 @@
 
-import CoursesList from '../CoursesList/CoursesList'
+import CoursesList from '../CoursesCardList/CoursesCardList'
 
 const CoursesContainer = () => {
 
