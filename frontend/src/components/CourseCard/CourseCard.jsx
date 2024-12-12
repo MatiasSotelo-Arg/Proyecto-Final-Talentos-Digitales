@@ -27,7 +27,7 @@ const CourseCard = ({ courses }) => {
             style={{ height: "148px" }}
           />
 
-          <Card.Body className="border text-start">
+          <Card.Body className="border-0 text-start sensitive-width">
             <Card.Title>{item.name}</Card.Title>
             <Button
               variant="primary"

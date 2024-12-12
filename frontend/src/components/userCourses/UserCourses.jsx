@@ -14,9 +14,12 @@ const UserCourses = () => {
         <>
         <div class="m-2"><h2>Mis Cursos</h2></div>
         
+        <div>
         {
            <CourseCard courses={userCourseFilter}/>
         }
+        </div>
+       
         </>
     )
     

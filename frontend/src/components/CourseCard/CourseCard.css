@@ -1,7 +1,11 @@
 @media (min-width: 400px) {
     .sensitive-width {
-        background-color: blue;
+        /* background-color: blue; */
+        /* padding: 10px 0; */
         /* max-width: ; */
     }
   }
 
+.card-body.sensitive-width {
+    padding: 10px 0 0 0;
+}

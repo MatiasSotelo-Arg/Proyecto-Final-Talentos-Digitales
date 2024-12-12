@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCart } from "../../redux/cartSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
-function ItemDetail() {
+function CourseDetail() {
   const { cursoId } = useParams();
   const cursos = useSelector((state) => state.courses.courses);
   const userCoursesId = useSelector((state) => state.userCourses.userCourses);
@@ -127,4 +127,4 @@ function ItemDetail() {
   );
 }
 
-export default ItemDetail;
+export default CourseDetail;
