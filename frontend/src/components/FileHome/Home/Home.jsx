@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <>
       <div>LO DEL PROFE</div>
-      <CategoriesList/>;
+      <CategoriesList/>
     </>
 
   )
