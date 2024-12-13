@@ -7,7 +7,7 @@ const CourseInfo = ({cursoFiltrado,courseAdquired}) => {
 
 
   return (
-    <Row>
+    <Row className="text-start">
         <Col md={12}>
             {/* Calificar */}
             <CourseInfoLike courseAdquired={courseAdquired} cursoFiltrado={cursoFiltrado}/>
@@ -17,16 +17,7 @@ const CourseInfo = ({cursoFiltrado,courseAdquired}) => {
             
            
 
-            {/* Comentarios */}
-            <div className="mb-4">
-                <h4>Comentarios</h4>
-                <div>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-                temporibus ratione quidem suscipit, voluptas beatae tempore ab
-                excepturi nihil totam facilis neque, assumenda praesentium tempora
-                numquam dolorum aut consequatur dolore.
-                </div>
-            </div>
+           
 
           {courseAdquired && (
             <div className="mb-4">
@@ -36,11 +27,22 @@ const CourseInfo = ({cursoFiltrado,courseAdquired}) => {
                 rows={3}
                 placeholder="Escriba su comentario..."
               />
-              <Button variant="primary" className="w-10" onClick>
+              <Button variant="primary" className="w-10 mt-2" onClick>
                 Agregar Comentario
               </Button>
             </div>
           )}
+
+           {/* Comentarios */}
+           <div className="mb-4">
+                <h4>Comentarios</h4>
+                <div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
+                temporibus ratione quidem suscipit, voluptas beatae tempore ab
+                excepturi nihil totam facilis neque, assumenda praesentium tempora
+                numquam dolorum aut consequatur dolore.
+                </div>
+            </div>
         </Col>
       </Row>
   )

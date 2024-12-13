@@ -27,7 +27,7 @@ const CourseInfoDescription = ({ cursoFiltrado }) => {
       </div>
 
       {/* Mostrar u ocultar descripción */}
-      {isDescriptionVisible && <p className="text-start">{cursoFiltrado.description}</p>}
+      {isDescriptionVisible && <p>{cursoFiltrado.description}</p>}
     </div>
   );
 };

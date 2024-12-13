@@ -3,7 +3,7 @@ import { IoMdHeartEmpty,IoMdHeart  } from "react-icons/io";
 
 const CourseInfoLike = ({courseAdquired,cursoFiltrado}) => {
   return (
-    <div className="mb-4 text-start">
+    <div className="mb-4">
 
         {courseAdquired ? <h4>Calificar</h4> : <h4>Calificaciones</h4>}
 

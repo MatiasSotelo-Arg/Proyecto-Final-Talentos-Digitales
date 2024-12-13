@@ -32,10 +32,10 @@ const CoursePlayListContainer = () => {
         <Button
           key={item._id} // Evita warnings de React
           variant="primary"
-          className="bg-transparent text-black border-0 btn-success add-hover"
+          className="bg-transparent text-black border-0 btn-success add-hover "
           onClick={() => handleSelectPlaylist(item)} // Manejar el clic
         >
-          <p>{item.name}</p>
+          <p className='mb-0'>{item.name}</p>
         </Button>
       ))}
     </div>
