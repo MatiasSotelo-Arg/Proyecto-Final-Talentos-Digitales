@@ -1,13 +1,21 @@
+import { useSelector } from "react-redux";
 import CartItemsList from "../CartItemsList/CartItemsList";
+import MercadoPago from "../Payments/mercadopago";
 
 const CartContainer = () => {
-    return (
-        <>
-            <div class="m-2"><h2>Carrito</h2></div>
+  const cart = useSelector((state) => state.cart.cart);
 
-            <CartItemsList/>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="m-2">
+        <h2>Carrito</h2>
+      </div>
+
+      <CartItemsList />
+
+      <MercadoPago cart={cart} />
+    </>
+  );
+};
 
 export default CartContainer;
