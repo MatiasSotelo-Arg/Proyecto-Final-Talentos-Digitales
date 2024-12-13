@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import CartItemsList from "../CartItemsList/CartItemsList";
-import MercadoPago from "../Payments/mercadopago";
+import MercadoPago from "../../Payments/MercadoPago";
 
 const CartContainer = () => {
   const cart = useSelector((state) => state.cart.cart);
