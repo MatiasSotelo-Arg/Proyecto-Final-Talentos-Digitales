@@ -1,60 +1,45 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { addPlayList } from '../../../redux/playListSlice';
+import { addPlayList, addSelectedPlaylist } from '../../../redux/playListSlice';
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
-import './CoursePlayListContainer.css'
-
+import './CoursePlayListContainer.css';
 
 const CoursePlayListContainer = () => {
   const courses = useSelector((state) => state.courses.courses); // Selector del estado global
-  const playListCourse = useSelector((state) => state.playListCourse); // Ajusta según tu slice
-  const dispatch = useDispatch();  
+  const playListCourse = useSelector((state) => state.playListCourse.playListCourse);
+  const dispatch = useDispatch();
 
-  //capturo ID
-  const {cursoId} = useParams()
+  // Capturo el ID del curso desde la URL
+  const { cursoId } = useParams();
 
-  // Controlar el despacho de la acción
+  // Cargar las playlists cuando hay cursos disponibles
   useEffect(() => {
-    if (courses?.length > 0) {
-      console.log("dispacho");
-      // Solo despachar si no hay elementos en playListCourse
-      if (playListCourse.length === 0) {
-        dispatch(addPlayList({ coursesArray: courses, courseId: cursoId }));
-      }
+    if (courses?.length > 0 && playListCourse.length === 0) {
+      dispatch(addPlayList({ coursesArray: courses, courseId: cursoId }));
     }
-  }, [courses, dispatch, playListCourse.length]); // También dependemos de playListCourse.length para evitar duplicados
-  
+  }, [courses, dispatch, playListCourse.length, cursoId]);
 
-  useEffect(() => {
-    console.log("playListCourse actualizado:", playListCourse);
-  }, [playListCourse]);
-
-  
+  // Actualizar la playlist seleccionada al hacer clic en un botón
+  const handleSelectPlaylist = (item) => {
+    dispatch(addSelectedPlaylist(item)); // Despachar la acción con el curso seleccionado
+  };
 
   return (
     <div>
-    
-      {playListCourse.map((item) => { 
-        return (
-           
-            <Button
-            variant="primary"
-            className="bg-transparent text-black border-0 btn-success add-hover"
-            >
-                <p key={item._id}>{item.name}</p>
-            </Button>
-        )
-         
-          
-         
-      })}
-    
+      {playListCourse.map((item) => (
+        <Button
+          key={item._id} // Evita warnings de React
+          variant="primary"
+          className="bg-transparent text-black border-0 btn-success add-hover"
+          onClick={() => handleSelectPlaylist(item)} // Manejar el clic
+        >
+          <p>{item.name}</p>
+        </Button>
+      ))}
     </div>
   );
-  
-  
 };
 
 export default CoursePlayListContainer;
