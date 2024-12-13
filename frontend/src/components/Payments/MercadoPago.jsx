@@ -5,7 +5,9 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 
 const MercadoPago = ({ cart }) => {
-  initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY);
+  initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, {
+    local: "es-AR",
+  });
   const [preferenceId, setPreferenceId] = useState(null);
   const createPreference = async () => {
     try {
