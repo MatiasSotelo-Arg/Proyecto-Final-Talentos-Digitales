@@ -5,6 +5,8 @@ import { addCart } from "../../../redux/cartSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 import './CourseDetail.css'
+import CoursePlayListContainer from "../CoursePlayListContainer/CoursePlayListContainer";
+
 
 function CourseDetail() {
   const { cursoId } = useParams();
@@ -62,12 +64,12 @@ function CourseDetail() {
       ></iframe>
 
       {/* Detalles del curso */}
-      <Card.Body className="d-flex flex-column text-start border-bottom border-sm border pb-4 pb-sm-0">
+      <Card.Body className="d-flex flex-column text-start border-bottom border-sm border pb-4 pb-sm-0 add-width">
         {/* Nombre del curso */}
         <Card.Title>{cursoFiltrado.name}</Card.Title>
 
         {/* Precio y botón de compra */}
-        {!courseAcquired && (
+        {!courseAcquired ? (
           <>
             <Card.Text>
               <strong>Precio:</strong> ${cursoFiltrado.price}
@@ -80,7 +82,13 @@ function CourseDetail() {
               Añadir al Carrito
             </Button>
           </>
-        )}
+        ) : 
+
+        <>
+          <CoursePlayListContainer/>
+        </>
+      
+      }
       </Card.Body>
     </Card>
   </Col>

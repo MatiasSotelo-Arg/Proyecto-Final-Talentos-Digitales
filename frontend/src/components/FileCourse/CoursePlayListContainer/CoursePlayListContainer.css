@@ -1,0 +1,9 @@
+.add-hover:hover {
+    text-decoration: underline;
+}
+
+button.add-hover {
+    max-width: 300px;
+    text-align: left;
+    padding-left: 0;
+}
