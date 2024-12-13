@@ -5,6 +5,10 @@ import { addCart } from "../../../redux/cartSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 import './CourseDetail.css'
+import CoursePlayListContainer from "../CoursePlayListContainer/CoursePlayListContainer";
+import CourseVideo from "../CourseVideo/CourseVideo";
+import CourseInfo from "../CourseInfo/CourseInfo";
+
 
 function CourseDetail() {
   const { cursoId } = useParams();
@@ -30,7 +34,7 @@ function CourseDetail() {
   };
 
   //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
-  const courseAcquired = userCoursesId.includes(cursoId);
+  const courseAdquired = userCoursesId.includes(cursoId);
 
   if (!cursoFiltrado) {
     return <p>Cargando curso...</p>;
@@ -49,25 +53,16 @@ function CourseDetail() {
   <Col md={12}>
     <Card className="mb-0 d-flex flex-column flex-md-row w-100 border-0">
       {/* Video del curso */}
-      <iframe
-        className="with-desktop"
-        width="100%"
-        height="400"
-        src="https://www.youtube.com/embed/acuU_LRH094?si=n4oYe9-kPVLLfgoR"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
+
+      <CourseVideo/>
 
       {/* Detalles del curso */}
-      <Card.Body className="d-flex flex-column text-start border-bottom border-sm border pb-4 pb-sm-0">
+      <Card.Body className="d-flex flex-column text-start border-bottom border-sm border pb-4 pb-sm-0 add-width">
         {/* Nombre del curso */}
         <Card.Title>{cursoFiltrado.name}</Card.Title>
 
         {/* Precio y botón de compra */}
-        {!courseAcquired && (
+        {!courseAdquired ? (
           <>
             <Card.Text>
               <strong>Precio:</strong> ${cursoFiltrado.price}
@@ -80,7 +75,13 @@ function CourseDetail() {
               Añadir al Carrito
             </Button>
           </>
-        )}
+        ) : 
+
+        <>
+          <CoursePlayListContainer/>
+        </>
+      
+      }
       </Card.Body>
     </Card>
   </Col>
@@ -88,47 +89,8 @@ function CourseDetail() {
 
 
       {/* Resto de la información */}
-      <Row>
-        <Col md={12}>
-          <div className="mb-4">
-            <h4>Descripción</h4>
-            <p>{cursoFiltrado.description}</p>
-          </div>
+      <CourseInfo cursoFiltrado={cursoFiltrado} courseAdquired={courseAdquired} />
 
-          <div className="mb-4">
-            {courseAcquired ? <h4>Calificar</h4> : <h4>Calificaciones</h4>}
-            <div>
-              {courseAcquired ? <Button>❤️</Button> : "❤️"}
-
-              <p>{cursoFiltrado.duration} corazones</p>
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <h4>Comentarios</h4>
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-              temporibus ratione quidem suscipit, voluptas beatae tempore ab
-              excepturi nihil totam facilis neque, assumenda praesentium tempora
-              numquam dolorum aut consequatur dolore.
-            </div>
-          </div>
-
-          {courseAcquired && (
-            <div className="mb-4">
-              <h4>Agregar un comentario</h4>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Escriba su comentario..."
-              />
-              <Button variant="primary" className="w-10" onClick>
-                Agregar Comentario
-              </Button>
-            </div>
-          )}
-        </Col>
-      </Row>
     </Container>
   );
 }
