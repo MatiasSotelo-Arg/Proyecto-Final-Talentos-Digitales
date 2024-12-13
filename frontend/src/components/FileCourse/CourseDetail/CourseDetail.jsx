@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCart } from "../../../redux/cartSlice";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
+import './CourseDetail.css'
+
 function CourseDetail() {
   const { cursoId } = useParams();
   const cursos = useSelector((state) => state.courses.courses);
@@ -38,48 +40,52 @@ function CourseDetail() {
     <Container className="mt-5">
       <Row className="mb-4">
         <Col>
-          <h2 className="text-center">Detalle del Curso</h2>
+          <h2 className="text-center text-sm-start">Detalle del Curso</h2>
         </Col>
       </Row>
 
       {/* Imagen y detalles del curso en una fila */}
-      <Row className="mb-4">
-        <Col md={12} className="d-flex">
-          <Card
-            className="mb-0"
-            style={{ flexDirection: "row", width: "100%" }}
-          >
-            <Card.Img
-              variant="top"
-              src={cursoFiltrado.imagen}
-              alt={cursoFiltrado.name}
-              style={{
-                maxWidth: "200px",
-                maxHeight: "200px",
-                objectFit: "cover",
-              }}
-            />
-            <Card.Body>
-              <Card.Title>{cursoFiltrado.name}</Card.Title>
+      <Row className="mb-4 my-5">
+  <Col md={12}>
+    <Card className="mb-0 d-flex flex-column flex-md-row w-100 border-0">
+      {/* Video del curso */}
+      <iframe
+        className="with-desktop"
+        width="100%"
+        height="400"
+        src="https://www.youtube.com/embed/acuU_LRH094?si=n4oYe9-kPVLLfgoR"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      ></iframe>
 
-              {!courseAcquired && (
-                <>
-                  <Card.Text>
-                    <strong>Precio:</strong> ${cursoFiltrado.price}
-                  </Card.Text>
-                  <Button
-                    variant="primary"
-                    className="w-10"
-                    onClick={handleAddCart}
-                  >
-                    Añadir al Carrito
-                  </Button>
-                </>
-              )}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      {/* Detalles del curso */}
+      <Card.Body className="d-flex flex-column text-start border-bottom border-sm border pb-4 pb-sm-0">
+        {/* Nombre del curso */}
+        <Card.Title>{cursoFiltrado.name}</Card.Title>
+
+        {/* Precio y botón de compra */}
+        {!courseAcquired && (
+          <>
+            <Card.Text>
+              <strong>Precio:</strong> ${cursoFiltrado.price}
+            </Card.Text>
+            <Button
+              variant="primary"
+              className="btn-sm with-button text-white bg-dark border-0 "
+              onClick={handleAddCart}
+            >
+              Añadir al Carrito
+            </Button>
+          </>
+        )}
+      </Card.Body>
+    </Card>
+  </Col>
+</Row>
+
 
       {/* Resto de la información */}
       <Row>

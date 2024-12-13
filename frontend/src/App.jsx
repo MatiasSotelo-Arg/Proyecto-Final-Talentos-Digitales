@@ -5,14 +5,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Pruebas from "./components/pruebas";
 
-import CoursesContainer from "./components/FileCourse/CoursesContainer/CoursesContainer";
+// import CoursesCardContainer from "./components/FileCart/CoursesCardContainer/CoursesCardContainer";
 import CourseDetail from "./components/FileCourse/CourseDetail/CourseDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
-import CartContainer from "./components/CartContainer/CartContainer";
+
 import UserCourses from "./components/UserCourses/UserCourses";
 import EditCourse from "./components/CoursesCRUD/EditCourse";
 import FooterContainer from "./components/Footer/FooterContainer/FooterContainer";
 import LoadUserToDB from "./components/Auth0/LoadUserToDB";
+import CartContainer from "./components/FileCart/CartContainer/CartContainer";
+import CoursesCardContainer from "./components/FileCourseCard/CoursesCardContainer/CoursesCardContainer";
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pruebas" element={<Pruebas />} />
           <Route path="/carrito" element={<CartContainer />} />
-          <Route path="/cursos" element={<CoursesContainer />} />
+          <Route path="/cursos" element={<CoursesCardContainer/>} />
           <Route path="/cursos/:cursoId" element={<CourseDetail />} />
           <Route path="/miscursos" element={<UserCourses/>} />
           <Route path="/modificar" element={<EditCourse/>} />

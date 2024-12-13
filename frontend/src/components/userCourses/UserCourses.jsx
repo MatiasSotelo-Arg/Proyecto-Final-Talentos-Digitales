@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import CourseCard from "../FileCourse/CourseCardDetail/CourseCardDetail";
+import CourseCardDetail from "../FileCourseCard/CourseCardDetail/CourseCardDetail";
 
 const UserCourses = () => {
 
@@ -16,7 +16,7 @@ const UserCourses = () => {
         
         <div>
         {
-           <CourseCard courses={userCourseFilter}/>
+           <CourseCardDetail courses={userCourseFilter}/>
         }
         </div>
        
