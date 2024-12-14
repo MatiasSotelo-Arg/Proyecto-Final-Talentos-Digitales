@@ -10,11 +10,9 @@ const store = configureStore({
   reducer: {
     courses: coursesSlice,
     cart: cartSlice,
-    userCourses: userCoursesSlice,
     playListCourse: playListSlice,
     comments: commentsSlice,
     user: userSlice,
-    playListCourse: playListSlice,
   },
 });
 
