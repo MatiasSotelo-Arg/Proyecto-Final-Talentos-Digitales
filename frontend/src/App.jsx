@@ -9,7 +9,7 @@ import Pruebas from "./components/pruebas";
 import CourseDetail from "./components/FileCourse/CourseDetail/CourseDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
 
-// import UserCourses from "./components/UserCourses/UserCourses";
+import UserCourses from "./components/UserCourses/UserCourses";
 import EditCourse from "./components/CoursesCRUD/EditCourse";
 import FooterContainer from "./components/Footer/FooterContainer/FooterContainer";
 import LoadUserToDB from "./components/Auth0/LoadUserToDB";
@@ -30,7 +30,7 @@ function App() {
           <Route path="/carrito" element={<CartContainer />} />
           <Route path="/cursos" element={<CoursesCardContainer />} />
           <Route path="/cursos/:cursoId" element={<CourseDetail />} />
-          {/* <Route path="/miscursos" element={<UserCourses />} /> */}
+          <Route path="/miscursos" element={<UserCourses />} />
           <Route
             path="/modificar"
             element={<EditCourse courseId={"6757ada6a603d6032889a7be"} />}
