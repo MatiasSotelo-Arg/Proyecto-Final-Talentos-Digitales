@@ -30,7 +30,7 @@ function App() {
           <Route path="/carrito" element={<CartContainer />} />
           <Route path="/cursos" element={<CoursesCardContainer />} />
           <Route path="/cursos/:cursoId" element={<CourseDetail />} />
-          <Route path="/miscursos" element={<UserCourses />} />
+          {/* <Route path="/miscursos" element={<UserCourses />} /> */}
           <Route
             path="/modificar"
             element={<EditCourse courseId={"6757ada6a603d6032889a7be"} />}
