@@ -1,17 +1,18 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import LoginButton from "../Auth0/Login";
 import LogoutButton from "../Auth0/Logout";
 import Profile from "../Auth0/Profile";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
 import "./Navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
-  const cartItemCount = 3;
+  const cart = useSelector((state) => state.cart.cart);
+  const cartItemCount = cart.length;
   const { isAuthenticated } = useAuth0();
+
   return (
     <Navbar expand="lg" className="bg-success text-white">
       <Container>
@@ -48,15 +49,17 @@ const NavBar = () => {
                 Categorías
               </Nav.Link>
             </Nav.Item> */}
-            <Nav.Item>
-              <Nav.Link
-                as={NavLink}
-                to="/miscursos"
-                className="text-white mx-1"
-              >
-                Mis Cursos
-              </Nav.Link>
-            </Nav.Item>
+            {isAuthenticated && (
+              <Nav.Item>
+                <Nav.Link
+                  as={NavLink}
+                  to="/miscursos"
+                  className="text-white mx-1"
+                >
+                  Mis Cursos
+                </Nav.Link>
+              </Nav.Item>
+            )}
 
             <Nav.Item className="mx-1 text-white">
               <NavLink to="/profile">

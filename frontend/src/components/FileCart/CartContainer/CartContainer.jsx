@@ -13,7 +13,7 @@ const CartContainer = () => {
 
       <CartItemsList />
 
-      <MercadoPago cart={cart} />
+      {cart.length > 0 && <MercadoPago cart={cart} />}
     </>
   );
 };
