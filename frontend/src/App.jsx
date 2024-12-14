@@ -8,7 +8,7 @@ import Pruebas from "./components/pruebas";
 // import CoursesCardContainer from "./components/FileCart/CoursesCardContainer/CoursesCardContainer";
 import CourseDetail from "./components/FileCourse/CourseDetail/CourseDetail";
 import DataLoader from "./components/DataLoader/DataLoader";
-import UserCourses from "./components/User/UserCourses";
+import UserCourses from "./components/UserCourses/UserCourses";
 
 import EditCourse from "./components/CoursesCRUD/EditCourse";
 import FooterContainer from "./components/Footer/FooterContainer/FooterContainer";
