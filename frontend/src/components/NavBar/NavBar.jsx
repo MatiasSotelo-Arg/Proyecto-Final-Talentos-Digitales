@@ -5,7 +5,7 @@ import LogoutButton from "../Auth0/Logout";
 import Profile from "../Auth0/Profile";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import "./Navbar.css";
+import "./NavBar.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
