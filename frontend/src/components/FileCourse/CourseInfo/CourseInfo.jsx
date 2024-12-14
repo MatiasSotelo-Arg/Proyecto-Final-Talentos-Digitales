@@ -2,9 +2,11 @@ import { Button, Col, Form, Row } from "react-bootstrap"
 
 import CourseInfoDescription from "./CourseInfoDescription/CourseInfoDescription";
 import CourseInfoLike from "./CourseInfoLike/CourseInfoLike";
+import CourseInfoComments from "./CourseInfoComments/CourseInfoComments";
 
 const CourseInfo = ({cursoFiltrado,courseAdquired}) => {
 
+  
 
   return (
     <Row className="text-start">
@@ -14,10 +16,6 @@ const CourseInfo = ({cursoFiltrado,courseAdquired}) => {
             {/* Descripcion */}
             <CourseInfoDescription cursoFiltrado={cursoFiltrado}/>
 
-            
-           
-
-           
 
           {courseAdquired && (
             <div className="mb-4">
@@ -34,15 +32,7 @@ const CourseInfo = ({cursoFiltrado,courseAdquired}) => {
           )}
 
            {/* Comentarios */}
-           <div className="mb-4">
-                <h4>Comentarios</h4>
-                <div>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
-                temporibus ratione quidem suscipit, voluptas beatae tempore ab
-                excepturi nihil totam facilis neque, assumenda praesentium tempora
-                numquam dolorum aut consequatur dolore.
-                </div>
-            </div>
+           <CourseInfoComments/>
         </Col>
       </Row>
   )
