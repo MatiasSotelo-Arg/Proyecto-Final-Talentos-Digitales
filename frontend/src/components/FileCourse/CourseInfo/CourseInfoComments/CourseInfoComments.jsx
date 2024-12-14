@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addComments } from "../../../../redux/commentsSlice";
 import useFetch from "../../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 const CourseInfoComments = () => {
 
@@ -33,7 +34,14 @@ const CourseInfoComments = () => {
         <div className="mb-4">
             <h4>Comentarios</h4>
             {commentsByCourse.map((comment) => {
-                return <p>{comment.content}</p>
+                return <Card body className="my-2">
+                    <h5 className="fw-bold" >{comment.author?.name}</h5>
+                    <p>{comment.content}</p>
+                </Card>;
+                
+                // <div>
+                        
+                //        </div>
             })}
         </div>
     )
