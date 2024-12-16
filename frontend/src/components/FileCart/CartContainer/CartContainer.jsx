@@ -16,9 +16,8 @@ const CartContainer = () => {
   const handleEmptyCart = () => {
     dispatch(emptyCart());
   };
+  
   return (
-
-    
     <>
       <div className="mx-2 ms-lg-5 my-3 text-start">
         <h2>Carrito</h2>

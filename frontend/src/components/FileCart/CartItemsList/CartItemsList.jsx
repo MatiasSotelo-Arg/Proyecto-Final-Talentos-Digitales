@@ -1,11 +1,23 @@
 import { useSelector } from "react-redux";
 
 import CartItemDetail from "../CartItemDetail/CartItemDetail";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const CartItemsList = () => {
   const carrito = useSelector((state) => state.cart.cart);
 
-  if (carrito.length === 0) return <p>Carrito Vacio</p>;
+  if (carrito.length === 0) return (
+    <div>
+      <h3 className="mb-3">Carrito Vacío!</h3>
+        <Link to="/cursos" className="text-decoration-none">
+        
+          <Button variant="secondary" className="mx-1 text-black bg-dark text-white border-0 rounded-0 btn btn-primary">
+            Agregar Cursos
+          </Button>
+        </Link>
+    </div>
+  )
 
   return (
     <>
