@@ -1,42 +1,25 @@
-import { Button } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteItemCart, emptyCart } from "../../../redux/cartSlice";
+import { useSelector } from "react-redux";
+
+import CartItemDetail from "../CartItemDetail/CartItemDetail";
 
 const CartItemsList = () => {
   const carrito = useSelector((state) => state.cart.cart);
 
-  const dispatch = useDispatch();
-
-  console.log(carrito);
-
   if (carrito.length === 0) return <p>Carrito Vacio</p>;
-
-  const handleDeleteItem = (itemId) => {
-    dispatch(deleteItemCart(itemId));
-  };
-
-  const handleEmptyCart = () => {
-    dispatch(emptyCart());
-  };
 
   return (
     <>
+    <div>
+    
       {carrito.map((item) => {
         return (
-          <div key={item._id}>
-            <p>{item.name}</p>
-
-            <Button onClick={() => handleDeleteItem(item._id)}>X</Button>
-            <p>
-              $<span>{item.price}</span>
-            </p>
-          </div>
+          <CartItemDetail item={item}/>
         );
       })}
-      <div>
-        Total: ${carrito.reduce((total, item) => total + item.price, 0)}
+        <div>
+          <p className="fw-bold text-uppercase">Total: ${carrito.reduce((total, item) => total + item.price, 0)}</p>
+        </div>
       </div>
-      <Button onClick={handleEmptyCart}>Vaciar Carrito</Button>
     </>
   );
 };

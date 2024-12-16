@@ -29,7 +29,7 @@ const MercadoPago = ({ cart }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleBuy}>
+      <Button variant="primary" onClick={handleBuy} className="h-10 text-black bg-dark text-white border-0 rounded-0 btn btn-primary btn btn-primary mx-1">
         Pagar
       </Button>
       {preferenceId && (

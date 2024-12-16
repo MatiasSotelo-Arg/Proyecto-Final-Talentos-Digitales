@@ -12,7 +12,7 @@ import CourseInfo from "../CourseInfo/CourseInfo";
 function CourseDetail() {
   const { cursoId } = useParams();
   const cursos = useSelector((state) => state.courses.courses);
-  const userCoursesId = useSelector((state) => state.user).myCourses;
+  const userCoursesId = useSelector((state) => state.user.myCourses);
   const [cursoFiltrado, setCursoFiltrado] = useState(null);
 
   useEffect(() => {
