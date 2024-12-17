@@ -62,44 +62,64 @@ function CarouselFadeExample() {
   };
 
   return (
-    <div className="carousel-container">
-      <Carousel
-        responsive={responsive}
-        infinite={true} // Hace el carousel cíclico
-        // Reproduce automáticamente
-        autoPlaySpeed={2000} // Velocidad de reproducción en ms
-        keyBoardControl={true} // Permite control por teclado
-        showDots={true} // Muestra los indicadores (dots)
-        customTransition="transform 500ms ease-in-out"
-        transitionDuration={500} // Duración de la transición
-      >
-        {cardData.map((card, index) => (
-          <div key={index} className="d-flex justify-content-center">
-            <Card style={{ width: "18rem", margin: "10px", height: "10rem" }}>
-              <Card.Img
-                style={{ width: "100%", height: "7rem" }}
-                variant="top"
-                src={card.imgUrl}
-              />
-              <Card.Body
-                style={{ width: "100%", height: "3rem", overflow: "hidden" }}
-              >
-                <Card.Title
-                  style={{ width: "6rem", height: "2rem", overflow: "hidden" }}
+    <>
+      <div className="m-2">
+        <h2>Cursos Destacados</h2>
+      </div>
+      <div className="carousel-container">
+        <Carousel
+          responsive={responsive}
+          infinite={true} // Hace el carousel cíclico
+          // Reproduce automáticamente
+          autoPlaySpeed={2000} // Velocidad de reproducción en ms
+          keyBoardControl={true} // Permite control por teclado
+          //showDots={true} // Muestra los indicadores (dots)
+          customTransition="transform 500ms ease-in-out"
+          transitionDuration={500} // Duración de la transición
+        >
+          {cardData.map((card, index) => (
+            <div key={index} className="d-flex justify-content-center">
+              <Card style={{ width: "18rem", margin: "10px", height: "10rem" }}>
+                <Card.Img
+                  style={{ width: "100%", height: "7rem" }}
+                  variant="top"
+                  src={card.imgUrl}
+                />
+                <Card.Body
+                  className="bg-success text-white mt-1"
+                  style={{
+                    width: "100%",
+                    height: "3rem",
+                    overflow: "hidden",
+                  }}
                 >
-                  {card.title}
-                </Card.Title>
-                <Card.Text
-                  style={{ width: "6rem", height: "1rem", overflow: "hidden" }}
-                >
-                  {card.text}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-        ))}
-      </Carousel>
-    </div>
+                  <Card.Title
+                    className=""
+                    style={{
+                      textAlign: "center",
+                      width: "10rem",
+                      height: "3rem",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {card.title}
+                  </Card.Title>
+                  <Card.Text
+                    style={{
+                      width: "6rem",
+                      height: "1rem",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {card.text}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    </>
   );
 }
 
