@@ -6,7 +6,7 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import { FiPlusCircle } from "react-icons/fi";
 import DeleteCourseButton from "./CoursesCRUD/DeleteCourse";
 import EditCourse from "./CoursesCRUD/EditCourse";
-
+import Carousel from "../components/FileCourse/CourseCarousel/CourseCarousel";
 const Pruebas = () => {
   // const cursos = useSelector((state) => state.courses.courses);
   // const dispatch = useDispatch();
@@ -40,8 +40,8 @@ const Pruebas = () => {
           </Card>
         </Col>
       </Row> */}
-
-      <CreateCourse />
+      <Carousel />
+      {/* <CreateCourse /> */}
       {/* <DeleteCourseButton courseId={"675919853a93a7a7519e8e2a"} /> */}
       {/* <EditCourse courseId={"67410535b2540e7763e04bed"} /> */}
     </Container>
