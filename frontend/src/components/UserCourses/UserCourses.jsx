@@ -18,6 +18,8 @@ const UserCourses = () => {
         user.myCourses.includes(course._id)
       );
       console.log("filtro:", filteredCourses);
+      console.log("mis cursos", user.myCourses);
+      console.log("cursos", courses);
       setUserCourseFilter(filteredCourses);
     }
   }, [user, courses, user?.myCourses]);

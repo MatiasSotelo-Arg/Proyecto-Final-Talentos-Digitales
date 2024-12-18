@@ -16,18 +16,17 @@ const userSlice = createSlice({
       return action.payload;
     },
     addMyCourses: (state, action) => {
-      // Verificar si el payload es un array
       if (Array.isArray(action.payload)) {
-        // Filtrar los elementos que ya existen en myCourses
+        // Filtrar los nuevos elementos que no están en myCourses
         const newCourses = action.payload.filter(
           (course) => !state.myCourses.includes(course)
         );
-        // Añadir los nuevos elementos a myCourses
-        state.myCourses.push(...newCourses);
+        // Asignar un nuevo array combinado
+        state.myCourses = [...state.myCourses, ...newCourses];
       } else {
-        // Si no es un array, añade el elemento directamente (como fallback)
+        // Si el payload no es un array, agregarlo si no existe
         if (!state.myCourses.includes(action.payload)) {
-          state.myCourses.push(action.payload);
+          state.myCourses = [...state.myCourses, action.payload];
         }
       }
     },
