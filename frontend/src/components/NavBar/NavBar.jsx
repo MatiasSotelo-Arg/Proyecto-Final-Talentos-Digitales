@@ -25,6 +25,17 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white" />
         <Navbar.Collapse id="basic-navbar-nav" className="reset">
           <Nav className="margin-reset">
+            {user && user._id === "6758c5ad462e0f1914e23c17" && (
+              <Nav.Item>
+                <Nav.Link
+                  as={NavLink}
+                  to="/admin/coursesdashboard"
+                  className="bg-dark text-white mx-1"
+                >
+                  DASHBOARD
+                </Nav.Link>
+              </Nav.Item>
+            )}
             <Nav.Item className="position-relative">
               <Nav.Link as={NavLink} to="/carrito" className="text-white mx-1">
                 <FiShoppingCart />
@@ -45,18 +56,6 @@ const NavBar = () => {
                 Inicio
               </Nav.Link>
             </Nav.Item>
-
-            {user && user._id === "6758c5ad462e0f1914e23c17" && (
-              <Nav.Item>
-                <Nav.Link
-                  as={NavLink}
-                  to="/admin/coursesdashboard"
-                  className="bg-dark text-white mx-1"
-                >
-                  DASHBOARD
-                </Nav.Link>
-              </Nav.Item>
-            )}
 
             <Nav.Item>
               <Nav.Link as={NavLink} to="/cursos" className="text-white mx-1">

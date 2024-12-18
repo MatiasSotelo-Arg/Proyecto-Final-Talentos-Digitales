@@ -16,13 +16,14 @@ const CartItemsList = () => {
   const [discountCode, setDiscountCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
 
-  const addToMyCourses = async (userId, carrito) => {
+  const addToMyCourses = async (userId, ids) => {
+    // const ids = carrito.map((item) => item._id);
     try {
       const response = await axios.put(
         `${import.meta.env.VITE_API_URL}api/users/add/${userId}`,
         {
           field: "myCourses",
-          value: carrito, // Array con los elementos a añadir
+          value: ids, // Array con los elementos a añadir
         }
       );
       console.log("Updated user:", response.data);
@@ -42,9 +43,10 @@ const CartItemsList = () => {
   const handleApplyDiscount = () => {
     if (discountCode === "TalentosDigitales2024") {
       setDiscountApplied(true); // Aplica el descuento
-      dispatch(addMyCourses(carrito));
+      const ids = carrito.map((item) => item._id);
+      dispatch(addMyCourses(ids));
       dispatch(emptyCart());
-      addToMyCourses(user._id, carrito)
+      addToMyCourses(user._id, ids)
         .then((updatedUser) => {
           console.log("User updated successfully:", updatedUser);
         })

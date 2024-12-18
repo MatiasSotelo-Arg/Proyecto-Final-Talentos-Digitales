@@ -19,9 +19,9 @@ function CourseDetail() {
 
   useEffect(() => {
     if (user && user.myCourses) {
-      setUserCoursesId(user.myCourses.map((course) => course._id));
+      setUserCoursesId(user.myCourses);
     }
-  }, [user]);
+  }, [user, user.myCourses]);
   //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
   const courseAdquired = userCoursesId.includes(cursoId);
 
