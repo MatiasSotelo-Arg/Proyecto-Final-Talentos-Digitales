@@ -1,7 +1,20 @@
-import { Button } from "react-bootstrap"
+import { useState } from "react";
 import { IoMdHeartEmpty,IoMdHeart  } from "react-icons/io";
 
 const CourseInfoLike = ({courseAdquired,cursoFiltrado}) => {
+
+  const [likes, setLikes] = useState(10);
+  const [likeBool, setLikeBool] = useState(false);
+  const [color, setColor] = useState("black");
+
+  const handleLike = () => {!likeBool ? modifyChanges(likes,+1,true,"red") : modifyChanges(likes,-1,false,"black")};
+
+  const modifyChanges = (likes,operacion,bool,color) => {
+    setLikes(likes + operacion);
+    setLikeBool(bool) 
+    setColor(color)
+  }
+
   return (
     <div className="mb-4">
 
@@ -10,10 +23,12 @@ const CourseInfoLike = ({courseAdquired,cursoFiltrado}) => {
         <div className="d-flex">
             {courseAdquired ?
                 <IoMdHeartEmpty 
-                style={{ cursor: "pointer", margin:"auto 5px"}}
+                style={{ cursor: "pointer", margin:"auto 5px", color: color}}
+                onClick={handleLike}
                 /> : <IoMdHeart />}
 
-            <p style={{margin:"auto 0"}}>{cursoFiltrado.likes} corazones</p>
+            {/* <p style={{margin:"auto 0"}}>{cursoFiltrado.likes} corazones</p> */}
+            <p style={{margin:"auto 0"}}>{likes} corazones</p>
         </div>
     </div>
   )
