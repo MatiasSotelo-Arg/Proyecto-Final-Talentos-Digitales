@@ -27,7 +27,8 @@ const CourseCardDetail = ({ courses }) => {
     }
   };
 
-  //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
+  //obtener url
+  
 
   return (
     <div className="container">
@@ -54,23 +55,25 @@ const CourseCardDetail = ({ courses }) => {
                   className="rounded-0"
                   style={{ height: "148px" }}
                 />
+
+                {/* Card Body */}
                 <Card.Body className="border-0 text-start">
+                <div className="d-flex justify-content-between align-items-center">
                   <Card.Title>
-                    {item.name}
-                    <Button
-                      variant="primary"
-                      className="btn-sm with-button text-white border-0 justify-content-end"
-                      onClick={() => handleAddCart(item._id)}
-                    >
-                      <TiShoppingCart />
-                    </Button>
+                    <p>{item.name}</p>
                   </Card.Title>
-                  {/* <Button
+
+                  {!userCoursesId.includes(item._id) &&
+                  <Button
                     variant="primary"
-                    className="bg-success border-0 border-white rounded-0"
+                    className="btn-sm with-button text-white border-0"
+                    onClick={() => handleAddCart(item._id)}
                   >
-                    Ver más
-                  </Button> */}
+                    <TiShoppingCart />
+                  </Button>
+                  }
+                </div>
+
                 </Card.Body>
               </Card>
             </Link>

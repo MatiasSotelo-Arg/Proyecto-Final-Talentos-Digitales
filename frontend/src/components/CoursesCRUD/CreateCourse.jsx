@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { createCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción en tu slice
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./FormStyles.css";
+import "./CreateCourse.css"
 
 const CreateCourse = () => {
   const dispatch = useDispatch();
@@ -104,292 +105,263 @@ const CreateCourse = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Crear Curso</h2>
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseName">
-          <Form.Label className="label-styled">Nombre:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
+    <h2 className="text-center mb-4">Crear Curso</h2>
+  
+    {/* Nombre del Curso */}
+    <Form.Group controlId="formCourseName" className="mb-3">
+      <Form.Label>Nombre:</Form.Label>
+      <Form.Control
+        type="text"
+        name="name"
+        value={courseData.name}
+        onChange={handleChange}
+        required
+        placeholder="Ingrese el nombre del curso"
+        className="input-width"
+      />
+    </Form.Group>
+  
+    {/* Descripción */}
+    <Form.Group controlId="formCourseDescription" className="mb-3">
+      <Form.Label>Descripción:</Form.Label>
+      <Form.Control
+        as="textarea"
+        name="description"
+        value={courseData.description}
+        onChange={handleChange}
+        required
+        placeholder="Ingrese una descripción del curso"
+        className="input-width"
+      />
+    </Form.Group>
+  
+    {/* Categoría */}
+    <Form.Group controlId="formCourseCategory" className="mb-3">
+      <Form.Label>Categoría:</Form.Label>
+      <Form.Control
+        as="select"
+        name="category"
+        value={courseData.category}
+        onChange={handleChange}
+        required
+        className="input-width"
+      >
+        <option value="">Seleccionar</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Programación">Programación</option>
+        <option value="Diseño">Diseño</option>
+        <option value="Otros">Otros</option>
+      </Form.Control>
+    </Form.Group>
+  
+    {/* Subcategoría */}
+    <Form.Group controlId="formCourseSubcategory" className="mb-3">
+      <Form.Label>Subcategoría:</Form.Label>
+      <Form.Control
+        type="text"
+        name="subcategory"
+        value={courseData.subcategory}
+        onChange={handleChange}
+        placeholder="Ingrese una subcategoría (opcional)"
+        className="input-width"
+      />
+    </Form.Group>
+  
+    {/* Duración */}
+    <Form.Group controlId="formCourseDuration" className="mb-3">
+      <Form.Label>Duración (horas):</Form.Label>
+      <Form.Control
+        type="number"
+        name="duration"
+        value={courseData.duration}
+        onChange={handleChange}
+        placeholder="Ingrese la duración en horas"
+        className="input-width"
+      />
+    </Form.Group>
+  
+    {/* Precio */}
+    <Form.Group controlId="formCoursePrice" className="mb-3">
+      <Form.Label>Precio:</Form.Label>
+      <Form.Control
+        type="number"
+        name="price"
+        value={courseData.price}
+        onChange={handleChange}
+        placeholder="Ingrese el precio del curso"
+        className="input-width"
+      />
+    </Form.Group>
+  
+    {/* Instructor */}
+    <Form.Group controlId="formCourseInstructor" className="mb-3">
+      <Form.Label>Instructor:</Form.Label>
+      <Form.Control
+        as="select"
+        name="instructor"
+        value={courseData.instructor}
+        onChange={handleChange}
+        required
+        className="input-width"
+      >
+        <option value="">Seleccionar instructor</option>
+        {instructors.map((instructor) => (
+          <option key={instructor._id} value={instructor._id}>
+            {instructor.email}
+          </option>
+        ))}
+      </Form.Control>
+    </Form.Group>
+  
+    <div className="mx-5">
+{/* Fechas */}
+<Row className="mb-3 ">
+      <Col md={6}>
+        <Form.Group controlId="formCourseStartDate">
+          <Form.Label>Fecha de inicio:</Form.Label>
           <Form.Control
-            className="input-thick-border"
-            type="text"
-            name="name"
-            value={courseData.name}
-            onChange={handleChange}
-            required
-          />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseDescription">
-          <Form.Label className="label-styled">Descripción:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
-            as="textarea"
-            name="description"
-            value={courseData.description}
-            onChange={handleChange}
-            required
-          />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseCategory">
-          <Form.Label className="label-styled">Categoría:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
-            as="select"
-            name="category"
-            value={courseData.category}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Seleccionar</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Programación">Programación</option>
-            <option value="Diseño">Diseño</option>
-            <option value="Otros">Otros</option>
-          </Form.Control>
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseSubcategory">
-          <Form.Label className="label-styled">Subcategoría:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
-            type="text"
-            name="subcategory"
-            value={courseData.subcategory}
-            onChange={handleChange}
-          />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseDuration">
-          <Form.Label className="label-styled">Duración (horas):</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
-            type="number"
-            name="duration"
-            value={courseData.duration}
-            onChange={handleChange}
-          />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCoursePrice">
-          <Form.Label className="label-styled">Precio:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
-            type="number"
-            name="price"
-            value={courseData.price}
-            onChange={handleChange}
-          />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseInstructor">
-          <Form.Label className="label-styled">Instructor:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
-            as="select"
-            name="instructor"
-            value={courseData.instructor}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Seleccionar instructor</option>
-            {instructors.map((instructor) => (
-              <option key={instructor._id} value={instructor._id}>
-                {instructor.email}
-              </option>
-            ))}
-          </Form.Control>
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseStartDate">
-          <Form.Label className="label-styled">Fecha de inicio:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
             type="date"
             name="startDate"
             value={courseData.startDate}
             onChange={handleChange}
+            className="input-width"
           />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseEndDate">
-          <Form.Label className="label-styled">
-            Fecha de finalización:
-          </Form.Label>
         </Form.Group>
-        <Col md={8}>
+      </Col>
+      <Col md={6}>
+        <Form.Group controlId="formCourseEndDate">
+          <Form.Label>Fecha de finalización:</Form.Label>
           <Form.Control
-            className="input-thick-border"
             type="date"
             name="endDate"
             value={courseData.endDate}
             onChange={handleChange}
+            className="input-width"
           />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseLevel">
-          <Form.Label className="label-styled">Nivel:</Form.Label>
         </Form.Group>
-        <Col md={8}>
+      </Col>
+    </Row>
+  
+    {/* Nivel */}
+    <Form.Group controlId="formCourseLevel" className="mb-3">
+      <Form.Label>Nivel:</Form.Label>
+      <Form.Control
+        as="select"
+        name="level"
+        value={courseData.level}
+        onChange={handleChange}
+        className="input-width"
+      >
+        <option value="">Seleccionar</option>
+        <option value="beginner">Principiante</option>
+        <option value="intermediate">Intermedio</option>
+        <option value="advanced">Avanzado</option>
+      </Form.Control>
+    </Form.Group>
+  
+    {/* Imagen y Video */}
+    <Row className="mb-3">
+      <Col md={6}>
+        <Form.Group controlId="formCourseImage">
+          <Form.Label>Imagen (URL):</Form.Label>
           <Form.Control
-            className="input-thick-border"
-            as="select"
-            name="level"
-            value={courseData.level}
-            onChange={handleChange}
-          >
-            <option value="">Seleccionar</option>
-            <option value="beginner">Principiante</option>
-            <option value="intermediate">Intermedio</option>
-            <option value="advanced">Avanzado</option>
-          </Form.Control>
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseImage">
-          <Form.Label className="label-styled">Imagen (URL):</Form.Label>
-        </Form.Group>
-        <Col md={8}>
-          <Form.Control
-            className="input-thick-border"
             type="text"
             name="image"
             value={courseData.image}
             onChange={handleChange}
+            placeholder="Ingrese la URL de la imagen"
+            className="input-width"
           />
-        </Col>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formCourseVideo">
-          <Form.Label className="label-styled">Video (URL):</Form.Label>
         </Form.Group>
-        <Col md={8}>
+      </Col>
+      <Col md={6}>
+        <Form.Group controlId="formCourseVideo">
+          <Form.Label>Video (URL):</Form.Label>
           <Form.Control
-            className="input-thick-border"
             type="text"
             name="video"
             value={courseData.video}
             onChange={handleChange}
+            placeholder="Ingrese la URL del video"
+            className="input-width"
           />
-        </Col>
-      </Row>
-      <Row className="mb-3">
-        <Button
-          variant="secondary"
-          onClick={handleAddToPlaylist}
-          className="mt-2"
-        >
-          Agregar a Playlist
-        </Button>
-      </Row>
-
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formVideoName">
-          <Form.Label className="label-styled">Nombre del Video:</Form.Label>
         </Form.Group>
-        <Col md={8}>
+      </Col>
+    </Row>
+  
+    {/* Playlist */}
+    <Form.Group className="mb-3">
+      <Form.Label>Agregar Video a la Playlist:</Form.Label>
+      <Row>
+        <Col md={6}>
           <Form.Control
-            className="input-thick-border"
             type="text"
             name="name"
             value={videoData.name}
             onChange={handleVideoChange}
-            placeholder="Ingrese el nombre del video"
+            placeholder="Nombre del video"
+            className="input-width"
           />
         </Col>
-      </Row>
-      <Row className="mb-3">
-        <Form.Group as={Col} md={4} controlId="formVideoURL">
-          <Form.Label className="label-styled">URL del Video:</Form.Label>
-        </Form.Group>
-        <Col md={8}>
+        <Col md={6}>
           <Form.Control
-            className="input-thick-border"
             type="text"
             name="url"
             value={videoData.url}
             onChange={handleVideoChange}
-            placeholder="Ingrese la URL del video"
+            placeholder="URL del video"
+            className="input-width"
           />
         </Col>
       </Row>
-
-      {/* Mostrar videos en la playlist */}
-      {courseData.playlist.length > 0 && (
-        <Row className="mb-3">
-          <Form.Group as={Col} md={4} controlId="formCoursePlaylist">
-            <Form.Label className="label-styled">Playlist:</Form.Label>
-          </Form.Group>
-          <Col md={8}>
-            <ul className="list-unstyled">
-              {courseData.playlist.map((video, index) => (
-                <li
-                  key={index}
-                  className="d-flex justify-content-between align-items-center mb-2"
-                >
-                  <div>
-                    {video.name} -{" "}
-                    <a
-                      href={video.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {video.url}
-                    </a>
-                  </div>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    onClick={() => handleRemoveFromPlaylist(index)}
-                  >
-                    Eliminar
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </Col>
-        </Row>
-      )}
-
-      <Button variant="primary" type="submit" className="mt-3">
-        Crear Curso
+      <Button
+        variant="secondary"
+        onClick={handleAddToPlaylist}
+        className="mt-5 w-30 w-md-auto"
+      >
+        Agregar a Playlist
       </Button>
-    </Form>
+    </Form.Group>
+  
+    {courseData.playlist.length > 0 && (
+      <div className="mb-3">
+        <h5>Playlist:</h5>
+        <ul className="list-unstyled">
+          {courseData.playlist.map((video, index) => (
+            <li
+              key={index}
+              className="d-flex justify-content-between align-items-center mb-2"
+            >
+              <span>
+                {video.name} -{" "}
+                <a
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {video.url}
+                </a>
+              </span>
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => handleRemoveFromPlaylist(index)}
+              >
+                Eliminar
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    </div>
+    
+  
+    <Button variant="primary" type="submit" className="w-30 w-md-auto mb-5 mt-3">
+      Crear Curso
+    </Button>
+  </Form>
+  
   );
 };
 
