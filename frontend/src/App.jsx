@@ -16,7 +16,7 @@ import LoadUserToDB from "./components/Auth0/LoadUserToDB";
 import CartContainer from "./components/FileCart/CartContainer/CartContainer";
 import CoursesCardContainer from "./components/FileCourseCard/CoursesCardContainer/CoursesCardContainer";
 import CreateCourse from "./components/CoursesCRUD/CreateCourse";
-import CoursesDashboard from "./components/Admin/coursesDashboard";
+import CoursesDashboard from "./components/Admin/CoursesDashboard";
 
 function App() {
   return (
