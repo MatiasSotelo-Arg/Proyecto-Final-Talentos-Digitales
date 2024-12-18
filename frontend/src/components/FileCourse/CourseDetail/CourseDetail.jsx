@@ -8,6 +8,7 @@ import "./CourseDetail.css";
 import CoursePlayListContainer from "../CoursePlayListContainer/CoursePlayListContainer";
 import CourseVideo from "../CourseVideo/CourseVideo";
 import CourseInfo from "../CourseInfo/CourseInfo";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function CourseDetail() {
   const { cursoId } = useParams();
@@ -15,6 +16,7 @@ function CourseDetail() {
   const user = useSelector((state) => state.user);
   const [cursoFiltrado, setCursoFiltrado] = useState(null);
   const [userCoursesId, setUserCoursesId] = useState([]);
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   // const [courseAdquired, setCourseAdquired] = useState(false);
 
   useEffect(() => {
@@ -39,6 +41,12 @@ function CourseDetail() {
   const dispatch = useDispatch();
 
   const handleAddCart = () => {
+    if (!isAuthenticated) {
+      // Redirige al login si no está autenticado
+      alert("Por favor, ingrese antes de Comprar");
+      loginWithRedirect();
+      return;
+    }
     dispatch(addCart(cursoFiltrado));
   };
 
