@@ -25,7 +25,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white" />
         <Navbar.Collapse id="basic-navbar-nav" className="reset">
           <Nav className="margin-reset">
-            {user && user._id === "6758c5ad462e0f1914e23c17" && (
+            {user && user._id === import.meta.env.VITE_ADMIN_ID && (
               <Nav.Item>
                 <Nav.Link
                   as={NavLink}
