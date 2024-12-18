@@ -13,13 +13,15 @@ const UserCourses = () => {
 
   // Actualiza el filtro cuando cambian `user` o `courses`
   useEffect(() => {
-    if (user && courses) {
+    if (user && user.myCourses && courses) {
       const filteredCourses = courses.filter((course) =>
         user.myCourses.includes(course._id)
       );
+      console.log("filtro:", filteredCourses);
       setUserCourseFilter(filteredCourses);
     }
-  }, [user, courses]);
+  }, [user, courses, user?.myCourses]);
+  console.log(userCourseFilter);
 
   return (
     <>

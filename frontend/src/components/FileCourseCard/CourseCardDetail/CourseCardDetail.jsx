@@ -12,7 +12,7 @@ const CourseCardDetail = ({ courses }) => {
   const user = useSelector((state) => state.user);
   const [userCoursesId, setUserCoursesId] = useState([]);
   useEffect(() => {
-    if (user) {
+    if (user && user.myCourses) {
       setUserCoursesId(user.myCourses);
     }
   }, [user]);
