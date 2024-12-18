@@ -12,8 +12,18 @@ import CourseInfo from "../CourseInfo/CourseInfo";
 function CourseDetail() {
   const { cursoId } = useParams();
   const cursos = useSelector((state) => state.courses.courses);
-  const userCoursesId = useSelector((state) => state.user.myCourses);
+  const user = useSelector((state) => state.user);
   const [cursoFiltrado, setCursoFiltrado] = useState(null);
+  const [userCoursesId, setUserCoursesId] = useState([]);
+  // const [courseAdquired, setCourseAdquired] = useState(false);
+
+  useEffect(() => {
+    if (user && user.myCourses) {
+      setUserCoursesId(user.myCourses.map((course) => course._id));
+    }
+  }, [user]);
+  //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
+  const courseAdquired = userCoursesId.includes(cursoId);
 
   useEffect(() => {
     if (cursos.length > 0) {
@@ -31,9 +41,6 @@ function CourseDetail() {
   const handleAddCart = () => {
     dispatch(addCart(cursoFiltrado));
   };
-
-  //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
-  const courseAdquired = userCoursesId.includes(cursoId);
 
   if (!cursoFiltrado) {
     return <p>Cargando curso...</p>;

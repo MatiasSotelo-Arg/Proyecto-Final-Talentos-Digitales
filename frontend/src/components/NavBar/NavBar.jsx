@@ -12,6 +12,7 @@ const NavBar = () => {
   const cart = useSelector((state) => state.cart.cart);
   const cartItemCount = cart.length;
   const { isAuthenticated } = useAuth0();
+  const user = useSelector((state) => state.user);
 
   return (
     <Navbar expand="lg" className="bg-success text-white">
@@ -44,6 +45,19 @@ const NavBar = () => {
                 Inicio
               </Nav.Link>
             </Nav.Item>
+
+            {user && user._id === "6758c5ad462e0f1914e23c17" && (
+              <Nav.Item>
+                <Nav.Link
+                  as={NavLink}
+                  to="/admin/coursesdashboard"
+                  className="bg-dark text-white mx-1"
+                >
+                  DASHBOARD
+                </Nav.Link>
+              </Nav.Item>
+            )}
+
             <Nav.Item>
               <Nav.Link as={NavLink} to="/cursos" className="text-white mx-1">
                 Cursos
