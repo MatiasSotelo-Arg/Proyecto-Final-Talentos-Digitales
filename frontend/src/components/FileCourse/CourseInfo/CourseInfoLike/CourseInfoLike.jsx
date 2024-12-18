@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { IoMdHeartEmpty,IoMdHeart  } from "react-icons/io";
+import { FaHeart } from "react-icons/fa";
+import { IoMdHeart } from "react-icons/io";
 
 const CourseInfoLike = ({courseAdquired,cursoFiltrado}) => {
 
@@ -22,13 +23,14 @@ const CourseInfoLike = ({courseAdquired,cursoFiltrado}) => {
 
         <div className="d-flex">
             {courseAdquired ?
-                <IoMdHeartEmpty 
-                style={{ cursor: "pointer", margin:"auto 5px", color: color}}
-                onClick={handleLike}
-                /> : <IoMdHeart />}
-
-            {/* <p style={{margin:"auto 0"}}>{cursoFiltrado.likes} corazones</p> */}
-            <p style={{margin:"auto 0"}}>{likes} corazones</p>
+                // <IoMdHeartEmpty 
+                // style={{  color: color}}
+                // onClick={handleLike}
+                // /> : <IoMdHeart />}
+                <FaHeart style={{ color: color, cursor: "pointer", margin:"auto 5px" }}  onClick={handleLike}/>
+                :
+                <IoMdHeart /> }
+            <p style={{cursor: "pointer", margin:"auto 5px"}}>{likes} corazones</p>
         </div>
     </div>
   )

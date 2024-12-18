@@ -21,18 +21,20 @@ const CategoriesList = () => {
 
   return (
     <>
-      <div>
-        <div className="m-2">
+      <div className="mb-5">
+        <div className="m-2 text-sm-start font-weight-bold">
           <h2>Categorías</h2>
         </div>
 
         <div className="row m-3 justify-content-center">
+          <div className="col-12 col-md-auto m-1">
           <Button
             className="w-100 text-black bg-dark text-white border-0 rounded-0"
             onClick={handleAllCourses}
           >
             Todos Los Cursos
           </Button>
+          </div>
           {uniqueCategories.map((category) => (
             <div className="col-12 col-md-auto m-1" key={category}>
               <Button

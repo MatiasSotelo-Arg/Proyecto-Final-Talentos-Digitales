@@ -59,7 +59,7 @@ function CarouselFadeExample() {
 
   return (
     <>
-      <div className="m-2">
+      <div className="m-2 text-sm-start font-weight-bold">
         <h2>Cursos Destacados</h2>
       </div>
       <div className="carousel-container">
@@ -89,7 +89,7 @@ function CarouselFadeExample() {
                     src={card.imgUrl}
                   />
                   <Card.Body
-                    className="bg-success text-white mt-1"
+                    className="bg-success text-white"
                     style={{
                       width: "100%",
                       height: "3rem",
@@ -97,9 +97,8 @@ function CarouselFadeExample() {
                     }}
                   >
                     <Card.Title
-                      className=""
                       style={{
-                        textAlign: "center",
+                        textAlign: "start",
                         width: "10rem",
                         height: "3.5rem",
                         overflow: "hidden",

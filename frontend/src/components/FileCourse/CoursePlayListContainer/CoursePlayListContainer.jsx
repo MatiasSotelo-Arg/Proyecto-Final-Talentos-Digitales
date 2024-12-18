@@ -27,7 +27,7 @@ const CoursePlayListContainer = () => {
   };
 
   return (
-    <div>
+    <div className='d-flex flex-column'>
       {playListCourse.map((item) => (
         <Button
           key={item._id} // Evita warnings de React

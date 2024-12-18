@@ -27,7 +27,7 @@ const UserCourses = () => {
 
   return (
     <>
-      <div className="m-2">
+      <div className="text-sm-start font-weight-bold margin mx-5 my-4">
         <h2>Mis Cursos</h2>
       </div>
       {userCourseFilter && userCourseFilter.length > 0 ? (

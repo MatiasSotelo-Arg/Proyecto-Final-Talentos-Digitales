@@ -45,7 +45,7 @@ const CourseCardDetail = ({ courses }) => {
               <Card
                 className="p-0 border-0 hover-card"
                 style={{
-                  maxWidth: "265px", // Controla el tamaño máximo de las tarjetas
+                  maxWidth: "340px", // Controla el tamaño máximo de las tarjetas
                   cursor: "pointer",
                 }}
               >
@@ -53,7 +53,7 @@ const CourseCardDetail = ({ courses }) => {
                   variant="top"
                   src={item.image}
                   className="rounded-0"
-                  style={{ height: "148px" }}
+                  style={{ height: "230px" }}
                 />
 
                 {/* Card Body */}
@@ -66,10 +66,10 @@ const CourseCardDetail = ({ courses }) => {
                   {!userCoursesId.includes(item._id) &&
                   <Button
                     variant="primary"
-                    className="btn-sm with-button text-white border-0"
+                    className="btn-sm with-button text-white border-0 text-black bg-dark text-white border-0 rounded-0 btn btn-primary"
                     onClick={() => handleAddCart(item._id)}
                   >
-                    <TiShoppingCart />
+                    <TiShoppingCart/>
                   </Button>
                   }
                 </div>

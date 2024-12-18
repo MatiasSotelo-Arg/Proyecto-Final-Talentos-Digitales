@@ -21,7 +21,7 @@ function CourseDetail() {
     if (user && user.myCourses) {
       setUserCoursesId(user.myCourses);
     }
-  }, [user, user.myCourses]);
+  }, [user, user?.myCourses]);
   //VERIFICA SI EL USUARIO TIENE EL CURSO PARA PERMITIRLE VERLO
   const courseAdquired = userCoursesId.includes(cursoId);
 

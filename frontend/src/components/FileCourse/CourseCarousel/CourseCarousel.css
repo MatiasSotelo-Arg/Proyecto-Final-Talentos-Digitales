@@ -12,7 +12,7 @@
 }
 
 .card-hover-effect:hover .card-title {
-  color: #1b3ba1; /* Cambia el color del título */
+  color: #212529; /* Cambia el color del título */
 }
 
 .card-hover-effect:hover .card-text {
