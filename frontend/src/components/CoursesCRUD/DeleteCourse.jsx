@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { deleteCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción implementada
+import { MdDeleteForever } from "react-icons/md";
 
 const DeleteCourseButton = ({ courseId }) => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const DeleteCourseButton = ({ courseId }) => {
       onClick={handleDelete}
       style={{ fontWeight: "bold", fontSize: "1rem" }}
     >
-      Eliminar Curso
+      <MdDeleteForever />
     </Button>
   );
 };

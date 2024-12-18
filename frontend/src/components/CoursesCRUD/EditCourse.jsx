@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCourse } from "../../redux/coursesSlice"; // Asegúrate de tener esta acción implementada
 import { Button, Form, Row, Col } from "react-bootstrap";
 import "./FormStyles.css";
+import { useParams } from "react-router-dom";
 
-const EditCourse = ({ courseId }) => {
+const EditCourse = () => {
+  console.log(useParams());
+  const courseId = useParams().cursoId;
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses.courses);
   const courseToEdit = courses.find((course) => course._id === courseId);

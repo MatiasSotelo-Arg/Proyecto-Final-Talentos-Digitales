@@ -40,6 +40,11 @@ const NavBar = () => {
               </Nav.Link>
             </Nav.Item> */}
             <Nav.Item>
+              <Nav.Link as={NavLink} to="/" className="text-white mx-1">
+                Inicio
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
               <Nav.Link as={NavLink} to="/cursos" className="text-white mx-1">
                 Cursos
               </Nav.Link>

@@ -1,3 +1,20 @@
 .carousel-container {
   max-width: 800px;
 }
+.card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: scale(1.05); /* Agranda ligeramente la tarjeta */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Agrega una sombra más visible */
+  cursor: pointer; /* Cambia el cursor a una mano */
+}
+
+.card-hover-effect:hover .card-title {
+  color: #1b3ba1; /* Cambia el color del título */
+}
+
+.card-hover-effect:hover .card-text {
+  color: #ffffff; /* Cambia el color del texto */
+}

@@ -15,6 +15,8 @@ import FooterContainer from "./components/Footer/FooterContainer/FooterContainer
 import LoadUserToDB from "./components/Auth0/LoadUserToDB";
 import CartContainer from "./components/FileCart/CartContainer/CartContainer";
 import CoursesCardContainer from "./components/FileCourseCard/CoursesCardContainer/CoursesCardContainer";
+import CreateCourse from "./components/CoursesCRUD/CreateCourse";
+import CoursesDashboard from "./components/Admin/coursesDashboard";
 
 function App() {
   return (
@@ -31,10 +33,19 @@ function App() {
           <Route path="/cursos" element={<CoursesCardContainer />} />
           <Route path="/cursos/:cursoId" element={<CourseDetail />} />
           <Route path="/miscursos" element={<UserCourses />} />
-          <Route
+          {/* <Route
             path="/modificar"
             element={<EditCourse courseId={"6757ada6a603d6032889a7be"} />}
+          /> */}
+          <Route path="/admin/crearcurso" element={<CreateCourse />} />
+          <Route
+            path="/admin/coursesdashboard"
+            element={<CoursesDashboard />}
           />
+          <Route path="/admin/editarcurso/:cursoId" element={<EditCourse />} />
+
+          <Route path="*" element={<Home />} />
+
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </div>

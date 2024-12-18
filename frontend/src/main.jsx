@@ -15,6 +15,9 @@ createRoot(document.getElementById("root")).render(
         audience: import.meta.env.VITE_API_IDENTIFIER, // Tu API Identifier
         scope: "openid profile email",
       }}
+      useRefreshTokens={true}
+      cacheLocation="localstorage"
+      onError={(err) => console.log(err)}
     >
       <App />
     </Auth0Provider>

@@ -1,11 +1,33 @@
 @media (min-width: 400px) {
-    .sensitive-width {
-        /* background-color: blue; */
-        /* padding: 10px 0; */
-        /* max-width: ; */
-    }
+  .sensitive-width {
+    /* background-color: blue; */
+    /* padding: 10px 0; */
+    /* max-width: ; */
   }
+}
 
 .card-body.sensitive-width {
-    padding: 10px 0 0 0;
+  padding: 10px 0 0 0;
+}
+
+/* Estilo base de la tarjeta */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza los cambios */
+}
+
+/* Efecto hover */
+.hover-card:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+  cursor: pointer; /* Cambia el cursor */
+}
+
+/* Cambio de color del título y botón */
+.hover-card:hover .card-title {
+  color: #28a745; /* Cambia el color del título al pasar el cursor */
+}
+
+.hover-card:hover .btn {
+  background-color: #218838; /* Cambia el color del botón */
+  border-color: #218838; /* Ajusta el borde */
 }

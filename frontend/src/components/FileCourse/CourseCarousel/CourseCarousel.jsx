@@ -2,6 +2,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "react-bootstrap/Card";
 import "./CourseCarousel.css";
+import { Link } from "react-router-dom";
 
 function CarouselFadeExample() {
   // const courses = useSelector((state) => state.courses.courses);
@@ -10,34 +11,29 @@ function CarouselFadeExample() {
     " https://yt3.googleusercontent.com/bDisn8rCsbvMyZPmrlVO_C20TdWzagUXjRV71AHfnFsNS5WU6rp1nIQRzF_y7zSWCtSBZehY=s160-c-k-c0x00ffffff-no-rj";
   const cardData = [
     {
-      title: "React Course",
+      title: "React",
       text: "Learn the basics of React.js and build amazing web apps.",
-      imgUrl: url,
+      imgUrl: "/assets/videoprofeReact1.jpg",
     },
     {
-      title: "Node.js Course",
+      title: "Node.js",
       text: "Master backend development with Node.js and Express.",
-      imgUrl: url,
+      imgUrl: "/assets/videoprofeNode1.jpg",
     },
     {
-      title: "MongoDB Course",
+      title: "MongoDB ",
       text: "Get started with NoSQL databases using MongoDB.",
-      imgUrl: url,
+      imgUrl: "/assets/videoprofeMongo1.jpg",
     },
     {
-      title: "JavaScript Course",
+      title: "JavaScript ",
       text: "Deep dive into JavaScript, the language of the web.",
-      imgUrl: url,
+      imgUrl: "/assets/videoJS1.jpg",
     },
     {
-      title: "HTML & CSS Course",
+      title: "Integración de Pago",
       text: "Build stunning web pages with HTML and CSS.",
-      imgUrl: url,
-    },
-    {
-      title: "TypeScript Course",
-      text: "Learn TypeScript for scalable web development.",
-      imgUrl: url,
+      imgUrl: "/assets/videoprofeMP1.jpg",
     },
   ];
 
@@ -79,42 +75,50 @@ function CarouselFadeExample() {
         >
           {cardData.map((card, index) => (
             <div key={index} className="d-flex justify-content-center">
-              <Card style={{ width: "18rem", margin: "10px", height: "10rem" }}>
-                <Card.Img
-                  style={{ width: "100%", height: "7rem" }}
-                  variant="top"
-                  src={card.imgUrl}
-                />
-                <Card.Body
-                  className="bg-success text-white mt-1"
-                  style={{
-                    width: "100%",
-                    height: "3rem",
-                    overflow: "hidden",
-                  }}
+              <Link
+                to="/cursos"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Card
+                  className="card-hover-effect"
+                  style={{ width: "18rem", margin: "10px", height: "12rem" }}
                 >
-                  <Card.Title
-                    className=""
+                  <Card.Img
+                    style={{ width: "100%", height: "7.5rem" }}
+                    variant="top"
+                    src={card.imgUrl}
+                  />
+                  <Card.Body
+                    className="bg-success text-white mt-1"
                     style={{
-                      textAlign: "center",
-                      width: "10rem",
+                      width: "100%",
                       height: "3rem",
                       overflow: "hidden",
                     }}
                   >
-                    {card.title}
-                  </Card.Title>
-                  <Card.Text
-                    style={{
-                      width: "6rem",
-                      height: "1rem",
-                      overflow: "hidden",
-                    }}
-                  >
-                    {card.text}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+                    <Card.Title
+                      className=""
+                      style={{
+                        textAlign: "center",
+                        width: "10rem",
+                        height: "3.5rem",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {card.title}
+                    </Card.Title>
+                    <Card.Text
+                      style={{
+                        width: "6rem",
+                        height: "1rem",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {card.text}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
             </div>
           ))}
         </Carousel>
