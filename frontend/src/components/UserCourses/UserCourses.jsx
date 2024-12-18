@@ -2,16 +2,24 @@ import { useSelector } from "react-redux";
 import CourseCardDetail from "../FileCourseCard/CourseCardDetail/CourseCardDetail";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const UserCourses = () => {
   const courses = useSelector((state) => state.courses.courses);
   const user = useSelector((state) => state.user);
   console.log(user);
 
-  const userCourseFilter =
-    user &&
-    courses &&
-    courses.filter((course) => user.myCourses.includes(course._id));
+  const [userCourseFilter, setUserCourseFilter] = useState([]);
+
+  // Actualiza el filtro cuando cambian `user` o `courses`
+  useEffect(() => {
+    if (user && courses) {
+      const filteredCourses = courses.filter((course) =>
+        user.myCourses.includes(course._id)
+      );
+      setUserCourseFilter(filteredCourses);
+    }
+  }, [user, courses]);
 
   return (
     <>

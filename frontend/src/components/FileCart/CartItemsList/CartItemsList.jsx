@@ -2,14 +2,39 @@ import { useSelector } from "react-redux";
 
 import CartItemDetail from "../CartItemDetail/CartItemDetail";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../../../redux/cartSlice";
+import axios from "axios";
+import { addMyCourses } from "../../../redux/userCoursesSlice";
 
 const CartItemsList = () => {
   const carrito = useSelector((state) => state.cart.cart);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [discountCode, setDiscountCode] = useState("");
   const [discountApplied, setDiscountApplied] = useState(false);
+
+  const addToMyCourses = async (userId, carrito) => {
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}api/users/add/${userId}`,
+        {
+          field: "myCourses",
+          value: carrito, // Array con los elementos a añadir
+        }
+      );
+      console.log("Updated user:", response.data);
+      return response.data; // Retorna el usuario actualizado
+    } catch (error) {
+      console.error(
+        "Error adding to myCourses:",
+        error.response?.data || error
+      );
+      throw error; // Lanza el error si deseas manejarlo en otro lugar
+    }
+  };
   const calculateTotal = () => {
     const total = carrito.reduce((total, item) => total + item.price, 0);
     return discountApplied ? 0 : total; // Si se aplicó el descuento, el total es 0
@@ -17,6 +42,16 @@ const CartItemsList = () => {
   const handleApplyDiscount = () => {
     if (discountCode === "TalentosDigitales2024") {
       setDiscountApplied(true); // Aplica el descuento
+      dispatch(addMyCourses(carrito));
+      dispatch(emptyCart());
+      addToMyCourses(user._id, carrito)
+        .then((updatedUser) => {
+          console.log("User updated successfully:", updatedUser);
+        })
+        .catch((error) => {
+          console.error("Failed to update user:", error);
+        });
+      alert("Descuento aplicado exitosamente. Cursos Comprados!");
     } else {
       setDiscountApplied(false); // Código inválido
       alert("Código de descuento inválido.");
